@@ -9,7 +9,7 @@ export default {
     <section class="email-app">
         <h1>hello email</h1>
         <email-filter @filter="changedCriteriaTxt"></email-filter>
-        <email-folders @filter="changedCriteria"></email-folders>
+        <email-folders @filter="changedCriteriaStatus"></email-folders>
         <email-list v-if="emails.length" :emails="emailsToShow"></email-list>
     </section>
     `,
@@ -17,11 +17,8 @@ export default {
         return {
             emails: [],
             criteria: {
-                status: "inbox/sent/trash/draft",
+                status: "",
                 txt: "",
-                isRead: null,
-                isStared: null,
-                lables: ["important", "romantic"],
             },
         };
     },
@@ -32,10 +29,26 @@ export default {
         changedCriteriaTxt(txt) {
             this.criteria.txt = txt;
         },
-        changedCriteria(criteria) {},
+        changedCriteriaStatus(status) {
+            this.criteria.status = status;
+        },
     },
     computed: {
         emailsToShow() {
+            const { email: logEmail } = emailService.loggedinUser;
+            switch (this.criteria.status) {
+                case "inbox":
+                    // this.emails = this.emails.filter((email) => {
+                    //     console.log(email.to, logEmail);
+                    //     email.to === logEmail;
+                    // });
+                    console.log(this.emails);
+                    break;
+                case "sent":
+                    break;
+                default:
+            }
+            console.log(this.emails);
             return this.emails.filter(
                 (email) =>
                     email.body.includes(this.criteria.txt) ||
