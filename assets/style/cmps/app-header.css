@@ -1,12 +1,21 @@
 .app-header {
-  background-color: var(--clr5);
-  color: var(--secondary-clr1);
-  padding: 1em;
+    background-color: var(--clr5);
+    color: var(--secondary-clr1);
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-@media(max-width: 720px) {
-  .app-header {
-    background-color: var(--clr3);
-    color: var(--secondary-clr2);
-  }
+.app-header .header-nav {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    .app-header {
+        background-color: var(--clr3);
+        color: var(--secondary-clr2);
+    }
 }
