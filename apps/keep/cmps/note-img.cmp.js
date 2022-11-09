@@ -3,6 +3,7 @@ export default {
     template: `
         <div class="note-img-container">
             <h3>{{title}}</h3>
+            <h3>{{imgUrl}}</h3>
             <!-- <img src="imgUrl" alt="no img found" /> -->
         </div>
     `,

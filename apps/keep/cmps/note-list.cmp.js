@@ -1,4 +1,5 @@
 import notePreview from "./note-preview.cmp.js"
+import noteTodos from "./note-todos.cmp.js" //
 
 export default {
     props: ['notes'],
@@ -15,5 +16,6 @@ export default {
 
     components: {
         notePreview,
+        noteTodos, //
     },
 };
