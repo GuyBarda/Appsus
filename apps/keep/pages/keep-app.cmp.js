@@ -1,8 +1,8 @@
 
-import noteService from "../apps/keep/services/note.service.js"
+import noteService from "../services/note.service.js"
 
-import noteFilter from "../apps/keep/cmps/note-filter.cmp.js"
-import noteList from "../apps/keep/cmps/note-list.cmp.js"
+import noteFilter from "../cmps/note-filter.cmp.js"
+import noteList from "../cmps/note-list.cmp.js"
 
 export default {
     template: `
