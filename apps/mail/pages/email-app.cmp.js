@@ -1,15 +1,15 @@
-import emailService from "../apps/mail/services/email-service.js";
+import emailService from "../services/email-service.js";
 
-import emailFilter from "../apps/mail/cmps/email-filter.cmp.js";
-import emailList from "../apps/mail/cmps/email-list.cmp.js";
-import emailFolders from "../apps/mail/cmps/email-folders.cmp.js";
+import emailFilter from "../cmps/email-filter.cmp.js";
+import emailList from "../cmps/email-list.cmp.js";
+import emailFolders from "../cmps/email-folders.cmp.js";
 
 export default {
     template: `
     <section class="email-app">
         <h1>hello email</h1>
-        <email-filter @filter="changedCriteria"></email-filter>
-        <email-folders></email-folders>
+        <email-filter @filter="changedCriteriaTxt"></email-filter>
+        <email-folders @filter="changedCriteria"></email-folders>
         <email-list v-if="emails.length" :emails="emailsToShow"></email-list>
     </section>
     `,
@@ -29,9 +29,10 @@ export default {
         emailService.query().then((emails) => (this.emails = emails));
     },
     methods: {
-        changedCriteria(txt) {
+        changedCriteriaTxt(txt) {
             this.criteria.txt = txt;
         },
+        changedCriteria(criteria) {},
     },
     computed: {
         emailsToShow() {
