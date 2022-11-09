@@ -5,10 +5,29 @@ import noteTodos from "./note-todos.cmp.js"
 export default {
     props: ['note'],
     template: `
-        <component :is="note.type"  
-        :info="note.info">
-        </component>
+        <section class="note-preview">
+
+            <section class="note-info" @click="clicked">
+                <component :is="note.type"  
+                :info="note.info">
+                </component>
+            </section>
+            
+            <section class="preview-controller">
+                <button>PIN</button>
+                <button>DELETE</button>
+                <button>EDIT</button>
+                <button>COLOR</button>
+                <button>SEND</button>
+            </section>
+        </section>
     `,
+
+    methods: {
+        clicked() {
+            console.log('ssss');
+        }
+    },
 
     components: {
         noteTxt,

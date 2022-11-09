@@ -4,7 +4,7 @@ export default {
     props: ['notes'],
     template: `
     <section class="note-list">
-        <ul>
+        <ul class="clean-list">
             <li v-for="note in notes" :key="note.id">
                 <note-preview
                 :note="note"/>
