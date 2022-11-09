@@ -18,8 +18,21 @@ export default {
     loggedinUser,
 };
 
-function query() {
-    return storageService.query(EMAILS_KEY);
+function query(criteria = null) {
+    if (!criteria) return storageService.query(EMAILS_KEY);
+    const { email: logEmail } = loggedinUser;
+    return storageService.query(EMAILS_KEY).then((emails) => {
+        switch (criteria.status) {
+            case "inbox":
+                return emails.filter((email) => email.to === logEmail);
+            case "sent":
+                return emails.filter((email) => email.to !== logEmail);
+            case "trash":
+                return emails.filter((email) => email.isTrash);
+            case "draft":
+                return emails.filter((email) => email.isDraft);
+        }
+    });
 }
 
 function get(emailId) {
@@ -43,7 +56,7 @@ function getEmptyEmail() {
         body: "",
         isRead: false,
         sentAt: 0,
-        from: "",
+        from: loggedinUser.email,
         to: "",
     };
 }
@@ -60,6 +73,8 @@ function _createEmails() {
                 sentAt: 1551142930594,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -69,6 +84,8 @@ function _createEmails() {
                 sentAt: 1551133920594,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -78,6 +95,8 @@ function _createEmails() {
                 sentAt: 1531133930594,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -87,6 +106,8 @@ function _createEmails() {
                 sentAt: 1555133930594,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -96,6 +117,8 @@ function _createEmails() {
                 sentAt: 1551133930574,
                 from: "OG@appsus.com",
                 to: "momo@momo.com",
+                isDraft: true,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -105,6 +128,8 @@ function _createEmails() {
                 sentAt: 1551133960594,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
             {
                 id: utilService.makeId(),
@@ -114,6 +139,8 @@ function _createEmails() {
                 sentAt: 1551133930598,
                 from: "momo@momo.com",
                 to: "OG@appsus.com",
+                isDraft: false,
+                isTrash: false,
             },
         ];
         utilService.saveToStorage(EMAILS_KEY, emails);
