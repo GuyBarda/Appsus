@@ -1,6 +1,6 @@
 export default {
     template: `
-        <input type="text" v-model="txt"/>
+        <input @change="$emit('filter', txt)" type="text" v-model="txt"/>
     `,
     data() {
         return {

@@ -15,8 +15,6 @@ export default {
     remove,
     save,
     getEmptyEmail,
-    addGoogleEmail,
-    getGoogleEmails,
     loggedinUser,
 };
 
@@ -65,7 +63,7 @@ function _createEmails() {
             },
             {
                 id: utilService.makeId(),
-                subject: "Miss you!",
+                subject: "Hello Guy!",
                 body: "Would love to catch up sometimes",
                 isRead: false,
                 sentAt: 1551133920594,
@@ -74,7 +72,7 @@ function _createEmails() {
             },
             {
                 id: utilService.makeId(),
-                subject: "Miss you!",
+                subject: "Hello Omer!",
                 body: "Would love to catch up sometimes",
                 isRead: false,
                 sentAt: 1531133930594,
@@ -83,7 +81,7 @@ function _createEmails() {
             },
             {
                 id: utilService.makeId(),
-                subject: "Miss you!",
+                subject: "Yossi Have a birthday!",
                 body: "Would love to catch up sometimes",
                 isRead: false,
                 sentAt: 1555133930594,
@@ -92,8 +90,8 @@ function _createEmails() {
             },
             {
                 id: utilService.makeId(),
-                subject: "Miss you!",
-                body: "Would love to catch up sometimes",
+                subject: "You have an amazing project",
+                body: "so cool project. would love to see it more",
                 isRead: false,
                 sentAt: 1551133930574,
                 from: "momo@momo.com",
@@ -101,7 +99,7 @@ function _createEmails() {
             },
             {
                 id: utilService.makeId(),
-                subject: "Miss you!",
+                subject: "ACV is now on sale!",
                 body: "Would love to catch up sometimes",
                 isRead: false,
                 sentAt: 1551133960594,
