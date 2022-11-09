@@ -59,7 +59,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551142930594,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
             {
                 id: utilService.makeId(),
@@ -68,7 +68,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551133920594,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
             {
                 id: utilService.makeId(),
@@ -77,7 +77,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1531133930594,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
             {
                 id: utilService.makeId(),
@@ -86,7 +86,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1555133930594,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
             {
                 id: utilService.makeId(),
@@ -94,8 +94,8 @@ function _createEmails() {
                 body: "so cool project. would love to see it more",
                 isRead: false,
                 sentAt: 1551133930574,
-                from: "momo@momo.com",
-                to: "user@appsus.com",
+                from: "OG@appsus.com",
+                to: "momo@momo.com",
             },
             {
                 id: utilService.makeId(),
@@ -104,7 +104,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551133960594,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
             {
                 id: utilService.makeId(),
@@ -113,7 +113,7 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551133930598,
                 from: "momo@momo.com",
-                to: "user@appsus.com",
+                to: "OG@appsus.com",
             },
         ];
         utilService.saveToStorage(EMAILS_KEY, emails);

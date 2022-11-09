@@ -1,13 +1,15 @@
 export default {
     props: ["email"],
     template: `
-        <div class="email-preview" :class="{read: email.isRead}">
-            <input type="checkbox" v-model="email.isRead"/>
-            <p>{{email.id}}</p>
-            <p>{{email.subject}}</p>
-            <p>{{email.body}}</p>
-            <p>{{formattedDate}}</p>
-        </div>
+        <router-link :to="'/email/' + email.id">
+            <div class="email-preview" :class="{read: email.isRead}">
+                <input type="checkbox" v-model="email.isRead"/>
+                <p>{{email.to}}</p>
+                <p>{{email.subject}}</p>
+                <p>{{email.body}}</p>
+                <p>{{formattedDate}}</p>
+            </div>
+        </router-link>
     `,
     created() {
         console.log(this.email);
