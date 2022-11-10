@@ -11,10 +11,10 @@ export default {
         <h1>Email</h1>
         <email-filter @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
-        <email-list @remove="removeEmail" @trash="trashEmail" @star="starEmail" v-if="emails.length" :emails="emails"></email-list>
+        <email-list v-if="emails.length" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="starEmail"  :emails="emails"></email-list>
+        <h3 v-else>no emails found</h3>
         <email-add @added="refreshEmails" @close="isCreate = false" v-if="isCreate"></email-add>
-    </section>
-    `,
+    </section>`,
     data() {
         return {
             emails: [],
@@ -61,15 +61,21 @@ export default {
         trashEmail(email) {
             console.log(email);
             email.isTrash = true;
-            emailService.save(email).then(() => {
-                this.getFilteredEmails();
-            });
+            // emailService.save(email).then(() => {
+            //     this.getFilteredEmails();
+            // });
+            this.saveEmail(email);
         },
         removeEmail(emailId) {
             emailService.remove(emailId).then(() => {
                 this.emails = this.emails.filter(
                     (email) => email.id !== emailId
                 );
+            });
+        },
+        saveEmail(email) {
+            emailService.save(email).then(() => {
+                this.getFilteredEmails();
             });
         },
     },
