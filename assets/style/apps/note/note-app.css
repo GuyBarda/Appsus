@@ -1,3 +1,10 @@
+.add-note-inputs {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: auto;
+}
+
 .note-lists {
     display: flex;
     flex-direction: column;
@@ -19,8 +26,6 @@
     margin-block-end: 10px;
     padding: 20px;
     color: var(--clr5)
-
-
 }
 
 .preview-controller {
@@ -50,8 +55,6 @@
     min-height: 0px;
     border: none;
 }
-
-
 
 /* /////////////////////////////////////// */
 

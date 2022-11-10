@@ -5,14 +5,13 @@ export default {
     template: `
         <div class="-edit-note-txt-container">
             <h3 contenteditable @input="saveContent($event,'title')">{{note.info.title}}</h3>
-            <button @click="save">x</button>
             <p contenteditable @input="saveContent($event,'txt')">{{note.info.txt}}</p>
+            <button @click="save">x</button>
         </div>
     `,
 
     methods: {
         saveContent(ev, key) {
-            console.dir(ev.target.innerText);
             this.note.info[key] = ev.target.innerText
         },
 
