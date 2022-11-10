@@ -47,7 +47,8 @@ export default {
     },
     watch: {
         obj() {
-            if (!this.obj) return;
+            console.log(this.$route.params.obj);
+            if (this.$route.params.obj) return;
             const note = JSON.parse(this.$route.params.obj);
             console.log(note);
             this.email.subject = note.title;

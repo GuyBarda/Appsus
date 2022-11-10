@@ -4,7 +4,7 @@ export default {
         <router-link @click="goTo" :to="'/email/' +email.id">
             <div class="email-preview" :class="{read: email.isRead}">
                 <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
-                <p>{{email.to}}</p>
+                <p>{{email.from}}</p>
                 <p>{{email.subject}}-<span>{{email.body}}</span></p>
                 <p>{{formattedDate}}</p>
                 <div class="actions ">
