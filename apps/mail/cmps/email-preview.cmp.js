@@ -7,17 +7,15 @@ export default {
                 <p>{{email.to}}</p>
                 <p>{{email.subject}}-<span>{{email.body}}</span></p>
                 <p>{{formattedDate}}</p>
-                <div class="actions">
-                    <button @click.prevent="$emit('remove', email.id)">x</button>
+                <div class="actions ">
+                    <button v-if="email.isTrash" @click.prevent="$emit('remove', email.id)">remove</button>
+                    <button v-else @click.prevent="$emit('trash', email)">trash</button>
                     <button @click.prevent="$emit('star')">star</button>
                 </div>
             </div>
 
         </router-link>
     `,
-    created() {
-        console.log(this.email);
-    },
     computed: {
         formattedDate() {
             var options = { day: "numeric", month: "short" };

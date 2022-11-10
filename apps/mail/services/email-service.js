@@ -22,11 +22,20 @@ function query(criteria = null) {
     if (!criteria) return storageService.query(EMAILS_KEY);
     const { email: logEmail } = loggedinUser;
     return storageService.query(EMAILS_KEY).then((emails) => {
+        emails = emails.filter(
+            (email) =>
+                email.subject.includes(criteria.txt) ||
+                email.body.includes(criteria.txt)
+        );
         switch (criteria.status) {
             case "inbox":
-                return emails.filter((email) => email.to === logEmail);
+                return emails.filter(
+                    (email) => email.to === logEmail && !email.isTrash
+                );
             case "sent":
-                return emails.filter((email) => email.to !== logEmail);
+                return emails.filter(
+                    (email) => email.from === logEmail && !email.isTrash
+                );
             case "trash":
                 return emails.filter((email) => email.isTrash);
             case "draft":
