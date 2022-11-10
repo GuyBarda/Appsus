@@ -10,8 +10,8 @@ export default {
     <section class="email-app">
         <h1>Email</h1>
         <email-filter @filter="changedCriteriaTxt"></email-filter>
-        <email-folders @create="isCreate = true" @filter="changedCriteriaStatus"></email-folders>
-        <email-list @remove="removeEmail" @star="starEmail" v-if="emails.length" :emails="emails"></email-list>
+        <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
+        <email-list @remove="removeEmail" @trash="trashEmail" @star="starEmail" v-if="emails.length" :emails="emails"></email-list>
         <email-add @added="refreshEmails" @close="isCreate = false" v-if="isCreate"></email-add>
     </section>
     `,
@@ -26,29 +26,44 @@ export default {
                 lables: ["important", "romantic"],
             },
             isCreate: false,
+            count: {
+                inbox: 0,
+                sent: 0,
+                starred: 0,
+                draft: 0,
+                trash: 0,
+            },
         };
     },
     created() {
-        this.refreshEmails();
+        this.getFilteredEmails();
     },
     methods: {
         changedCriteriaTxt(txt) {
+            if (this.criteria.txt === txt) return;
             this.criteria.txt = txt;
-            // emailService
-            //     .query(this.criteria)
-            //     .then((emails) => (this.emails = emails));
+            this.getFilteredEmails();
         },
-        changedCriteriaStatus(status) {
-            this.criteria.status = status;
-            emailService
-                .query(this.criteria)
-                .then((emails) => (this.emails = emails));
+        changeCriteria(criteria) {
+            // if (this.criteria === criteria) return;
+            this.criteria = criteria;
+            this.getFilteredEmails();
         },
         refreshEmails() {
+            this.getFilteredEmails();
+            this.isCreate = false;
+        },
+        getFilteredEmails() {
             emailService
                 .query(this.criteria)
                 .then((emails) => (this.emails = emails));
-            this.isCreate = false;
+        },
+        trashEmail(email) {
+            console.log(email);
+            email.isTrash = true;
+            emailService.save(email).then(() => {
+                this.getFilteredEmails();
+            });
         },
         removeEmail(emailId) {
             emailService.remove(emailId).then(() => {
