@@ -33,7 +33,7 @@ export default {
                 this.email.isDraft = true;
                 emailService.save(this.email);
             }
-            this.$emit("close");
+            this.$router.push("/email");
         },
     },
 };
