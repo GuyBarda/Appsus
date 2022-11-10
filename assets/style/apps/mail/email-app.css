@@ -4,75 +4,105 @@
     position: relative;
     gap: 10px;
     padding: 10px;
+    background-color: #f6f8fc;
+    color: #202124;
 }
 
 .email-folders {
     display: flex;
     flex-direction: column;
+    /* gap: 5px; */
 }
 
 .email-folders button {
     border: 0;
     background-color: transparent;
     text-align: start;
+    border-radius: 50px;
+    /* min-height: 20px; */
+    /* min-width: none; */
+}
+
+.email-folders button:hover {
+    border: 0;
+    background-color: #d3e3fd;
+    text-align: start;
     /* min-width: none; */
 }
 
 .email-list ul {
-    background-color: #e2eaf1c2;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    min-height: 80vh;
+    padding: 10px;
 }
 
 .email-list ul li {
-    width: 100%;
+    /* width: 100%; */
     /* height: 100%; */
 }
 
 .email-preview {
     /* text-align: center; */
-    background-color: rgb(159, 159, 159);
+    background-color: transparent;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
-    border: 1px solid rgb(84, 83, 83);
-    color: black;
+    border-bottom: 1px solid #eceff1;
+    /* color: black; */
     position: relative;
+    padding-inline: 10px;
 }
 
 .email-preview .actions {
     position: absolute;
-    top: 0;
+    /* top: 0; */
     right: 0;
+    /* opacity: 0; */
+    display: none;
     /* background-color: blue; */
     /* width: 100%; */
     /* height: 100%; */
 }
 
+.email-preview:hover {
+    box-shadow: 0px 0px 5px 2px #eceff1;
+    /* border: 1px solid #eceff1; */
+}
+
+.email-preview:hover .actions {
+    /* opacity: 1; */
+    display: block;
+}
+
 .email-preview .actions button {
     /* background-color: transparent; */
     border: 0;
-    width: 12px;
-    height: 12px;
+    min-width: none;
+    min-height: 100%;
 }
 
 .email-filter {
-    background-color: #ffffff;
+    background-color: #d7e0ec;
+    color: #001d35;
     border-radius: 7px;
     outline: 0;
     opacity: 0.2;
     transition: opacity 0.2s;
+    border: 0;
 }
 
 .email-filter:focus {
-    color: #d2d0cb;
+    background-color: #fff;
+    /* color: #ffffff; */
     opacity: 1;
 }
 
 .read {
-    background-color: rgb(93, 93, 93);
+    background-color: #d3e3fd;
 }
 
 .email-add {

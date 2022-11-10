@@ -2,7 +2,6 @@ export default {
     props: [""],
     template: `
             <div class="email-folders">
-
                 <button class="compose" @click="$emit('create')">Compose</button>
                 <button @click="changeCriteria('status' ,'inbox')">Inbox</button>
                 <button @click="changeCriteria('status' , 'starred')">Starred</button>
@@ -11,16 +10,15 @@ export default {
                 <button @click="changeCriteria('status' , 'draft')">Draft</button>
                 <button @click="changeCriteria('status' , 'trash')">Trash</button>
             </div>
-
     `,
     data() {
         return {
             criteria: {
                 status: "",
-                txt: "", // no need to support complex text search
-                isRead: null, // (optional property, if missing: show all)
-                isStared: null, // (optional property, if missing: show all)
-                lables: ["important", "romantic"], // has any of the labels
+                txt: "",
+                isRead: null,
+                isStared: null,
+                lables: ["important", "romantic"],
             },
         };
     },

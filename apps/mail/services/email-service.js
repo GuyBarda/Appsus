@@ -15,7 +15,6 @@ export default {
     remove,
     save,
     getEmptyEmail,
-    loggedinUser,
 };
 
 function query(criteria = null) {
@@ -29,18 +28,26 @@ function query(criteria = null) {
         );
         switch (criteria.status) {
             case "inbox":
-                return emails.filter(
+                emails = emails.filter(
                     (email) => email.to === logEmail && !email.isTrash
                 );
+                break;
             case "sent":
-                return emails.filter(
+                emails = emails.filter(
                     (email) => email.from === logEmail && !email.isTrash
                 );
+                break;
             case "trash":
-                return emails.filter((email) => email.isTrash);
+                emails = emails.filter((email) => email.isTrash);
+                break;
             case "draft":
-                return emails.filter((email) => email.isDraft);
+                emails = emails.filter((email) => email.isDraft);
+                break;
         }
+
+        return criteria.isRead
+            ? emails.filter((email) => email.isRead)
+            : emails;
     });
 }
 

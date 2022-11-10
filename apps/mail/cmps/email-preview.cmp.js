@@ -3,7 +3,7 @@ export default {
     template: `
         <router-link :to="'/email/' + email.id">
             <div class="email-preview" :class="{read: email.isRead}">
-                <input type="checkbox" v-model="email.isRead"/>
+                <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
                 <p>{{email.to}}</p>
                 <p>{{email.subject}}-<span>{{email.body}}</span></p>
                 <p>{{formattedDate}}</p>
@@ -16,6 +16,9 @@ export default {
 
         </router-link>
     `,
+    methods: {
+        save() {},
+    },
     computed: {
         formattedDate() {
             var options = { day: "numeric", month: "short" };

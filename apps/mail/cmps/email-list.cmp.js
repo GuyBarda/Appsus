@@ -6,7 +6,7 @@ export default {
         <div class="email-list">
             <ul class="clean-list">
                 <li v-for="email in emails">
-                    <email-preview @remove="$emit('remove', email.id)" @trash="$emit('trash', email)" @star="$emit('star')" :email="email"></email-preview>
+                    <email-preview @save="$emit('save', email)" @remove="$emit('remove', email.id)" @trash="$emit('trash', email)" @star="$emit('star')" :email="email"></email-preview>
                 </li>
             </ul>
         </div>
