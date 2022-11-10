@@ -15,6 +15,7 @@ const options = {
             <user-msg />
         </section>
     `,
+
     components: {
         appHeader,
         appFooter,

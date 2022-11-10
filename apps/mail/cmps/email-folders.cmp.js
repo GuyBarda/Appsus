@@ -3,12 +3,12 @@ export default {
     template: `
             <div class="email-folders">
                 <button class="compose" @click="$emit('create')">Compose</button>
-                <button @click="changeCriteria('status' ,'inbox')">Inbox</button>
-                <button @click="changeCriteria('status' , 'starred')">Starred</button>
-                <button @click="changeCriteria('isRead' , true)">Read</button>
-                <button @click="changeCriteria('status' , 'sent')">Sent</button>
-                <button @click="changeCriteria('status' , 'draft')">Draft</button>
-                <button @click="changeCriteria('status' , 'trash')">Trash</button>
+                <button @click="changeCriteria('status' ,'inbox', $event)">Inbox</button>
+                <button @click="changeCriteria('status' , 'starred', $event)">Starred</button>
+                <button @click="changeCriteria('isRead' , true , $event)">Read</button>
+                <button @click="changeCriteria('status' , 'sent', $event)">Sent</button>
+                <button @click="changeCriteria('status' , 'draft', $event)">Draft</button>
+                <button @click="changeCriteria('status' , 'trash', $event)">Trash</button>
             </div>
     `,
     data() {
@@ -23,7 +23,15 @@ export default {
         };
     },
     methods: {
-        changeCriteria(key, value) {
+        changeCriteria(key, value, ev) {
+            (this.criteria = {
+                status: "",
+                txt: "",
+                isRead: null,
+                isStared: null,
+                lables: ["important", "romantic"],
+            }),
+                ev.target.classList.add("active");
             this.criteria[key] = value;
             console.log(this.criteria);
             this.$emit("filter", this.criteria);

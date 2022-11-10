@@ -2,18 +2,18 @@ import emailService from "../services/email-service.js";
 
 export default {
     template: `
-        <div v-if="email" class="email-add">
-            <form @submit.prevent="addEmail">
-                <h2>New Email</h2>
-                <label htmlFor="">to</label>
-                <input type="text" name="" v-model="email.to"/>
-                <label htmlFor="">subject</label>
-                <input type="text" name="" v-model="email.subject"/>
-                <textarea v-model="email.body" cols="30" rows="10"></textarea>
-                <button>submit</button>
+        <section v-if="email" class="email-add">
+            <form class="email-form" @submit.prevent="addEmail">
+                <header class="form-header debug">
+                    <h2>New Email</h2>
+                    <button class="btn-close-create" @click="closeCreate">x</button>
+                </header>
+                <input type="text" name="" v-model="email.to" placeholder="to"/>
+                <input type="text" name="" v-model="email.subject" placeholder="subject"/>
+                <textarea class="debug" v-model="email.body" cols="30" rows="10"></textarea>
+                <button class="debug">submit</button>
             </form>
-            <button @click="closeCreate">x</button>
-        </div>
+        </section>
     `,
     data() {
         return {
