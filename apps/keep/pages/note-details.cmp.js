@@ -1,8 +1,8 @@
 import noteService from "../services/note.service.js";
 
-import noteTxt from "../cmps/note-txt.cmp.js"
-import noteImg from "../cmps/note-img.cmp.js"
-import noteTodos from "../cmps/note-todos.cmp.js"
+import noteTxt from "../cmps/edit-note-txt.cmp.js"
+import noteImg from "../cmps/edit-note-img.cmp.js"
+import noteTodos from "../cmps/edit-note-todos.cmp.js"
 
 export default {
   template: `
@@ -13,18 +13,16 @@ export default {
               
               <section class="note-type">
                 <component :is="note.type"  
-                :info="note.info"
-                @editTxt="editTxt">
+                :note="note"
+                @updateData="$emit('updateData')">
                 </component>
               </section>
 
               <section class="preview-controller">
-                <button @click.prevernt="setPin(note.id)"><i class="fa-solid fa-map-pin"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-bell"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-user-plus"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-image"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-palette"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-circle-chevron-down"></i></button>
+                <button @click.prevernt="setPin(note.id)"><i class="fa-solid fa-lg fa-map-pin"></i></button>
+                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-user-plus"></i></button>
+                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-image"></i></button>
+                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-palette"></i></button>
               </section>
               
             </div>
@@ -62,19 +60,6 @@ export default {
           this.$emit('updateData')
 
         })
-
-
-
-
-
-
-      // noteService.get(this.note.id)
-      //   .then(note => {
-      //     note.info.txt = txt
-      //   })
-
-      // this.note.info.txt = txt
-
     },
 
     click() {

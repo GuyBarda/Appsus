@@ -1,16 +1,17 @@
 export default {
     props: ['info'],
     template: `
-        <div class="note-txt-container">
+        <div class="note-img-container">
             <h3>{{title}}</h3>
-            <p >{{txt}}</p>
+            <h3>{{imgUrl}}</h3>
+            <!-- <img src="imgUrl" alt="no img found" /> -->
         </div>
     `,
 
     data() {
         return {
             title: this.info.title,
-            txt: this.info.txt,
+            imgUrl: this.info.url
         }
     },
 

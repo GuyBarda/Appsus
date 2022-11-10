@@ -23,6 +23,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     url: "http://some-img/me",
                     title: "Bobi and Me"
@@ -35,6 +36,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     label: "Get my stuff together",
                     todos: [
@@ -50,6 +52,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     title: 'yeah!',
                     txt: "Just a text..."
@@ -63,6 +66,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     title: 'Pulk/Pull Revolving Doors',
                     txt: `There are barn doors.\n
@@ -89,6 +93,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: true,
+                isSelectedNote: false,
                 info: {
                     label: "Milk list!",
                     todos: [
@@ -105,6 +110,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     url: "http://some-img/me",
                     title: "Kuki and Me"
@@ -117,6 +123,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: true,
+                isSelectedNote: false,
                 info: {
                     label: "Understand VUE!",
                     todos: [
@@ -135,6 +142,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     title: 'yeah!',
                     txt: "Just a text..."
@@ -147,6 +155,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-todos",
                 isPinned: false,
+                isSelectedNote: false,
                 info: {
                     label: "Set my stuff now!",
                     todos: [

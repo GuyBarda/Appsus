@@ -11,6 +11,7 @@ export default {
         <h1>hello keep!</h1>
         <note-filter/>
         <note-list
+        @setSelectedNote="setSelectedNote"
         @setPin="setPin"
         v-if="notes"
         :notes="notes"/>
@@ -38,6 +39,10 @@ export default {
                 .then(notes => {
                     this.notes = notes
                 })
+        },
+
+        setSelectedNote(noteId) {
+            console.log(noteId)
         },
 
         setPin(noteId) {

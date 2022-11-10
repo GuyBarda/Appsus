@@ -13,6 +13,7 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
+                        @setSelectedNote="setSelectedNote"
                         @setPin="setPin"
                         v-if="note.isPinned"
                         :note="note"/>
@@ -26,6 +27,7 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
+                        @setSelectedNote="setSelectedNote"
                         @setPin="setPin"
                         v-if="!note.isPinned"
                         :note="note"/>  
@@ -39,8 +41,11 @@ export default {
     `,
 
     methods: {
+        setSelectedNote(noteId) {
+            this.$emit('setSelectedNote', noteId)
+        },
+
         setPin(noteId) {
-            console.log(noteId)
             this.$emit('setPin', noteId)
         }
     },
