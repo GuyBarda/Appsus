@@ -29,11 +29,16 @@ export default {
         };
     },
     created() {
+        console.log("details");
         const id = this.$route.params.id;
         emailService.get(id).then((email) => {
             this.email = email;
             console.log(this.email);
         });
+    },
+    unmounted() {
+        console.log("bye");
+        this.$emit("review", false);
     },
     computed: {
         formattedDate() {

@@ -1,7 +1,7 @@
 export default {
     props: ["email"],
     template: `
-        <router-link :to="'/email/' + email.id">
+        <router-link @click="goTo" :to="'/email/' +email.id">
             <div class="email-preview" :class="{read: email.isRead}">
                 <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
                 <p>{{email.to}}</p>
@@ -17,11 +17,18 @@ export default {
                     </button>
                 </div>
             </div>
-
         </router-link>
     `,
     methods: {
-        save() {},
+        goTo() {
+            this.$emit("review", true);
+            console.log(this.email.isDraft);
+            this.email.isDraft
+                ? this.$router.push(
+                      "/email/compose/" + JSON.stringify(this.email)
+                  )
+                : this.$router.push("/email/" + this.email.id);
+        },
     },
     computed: {
         formattedDate() {

@@ -24,6 +24,11 @@
     background-color: #d3e3fd;
 }
 
+.email-details {
+    /* grid-row: 1;
+    grid-column: 1; */
+}
+
 .email-list ul {
     background-color: #ffffff;
     display: flex;
@@ -47,6 +52,7 @@
 
 .email-preview > * {
     justify-self: start;
+    overflow: auto;
 }
 
 .email-preview:hover {

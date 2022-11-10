@@ -9,12 +9,11 @@ export default {
     template: `
     <section class="email-app">
         <h1>Email</h1>
-        <email-filter @filter="changedCriteriaTxt"></email-filter>
+        <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
-        <email-list v-if="emails.length" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="starEmail"  :emails="emails"></email-list>
-        <h3 v-else>no emails found</h3>
-        <!-- <email-add ></email-add> -->
-        <router-view @added="refreshEmails" @close="isCreate = false"></router-view>
+        <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="starEmail"  :emails="emails"></email-list>
+        <!-- <h3 v-else>no emails found</h3> -->
+        <router-view v-else @added="refreshEmails" @close="isCreate = false"></router-view>
     </section>`,
     data() {
         return {
@@ -27,19 +26,37 @@ export default {
                 lables: ["important", "romantic"],
             },
             isCreate: false,
-            count: {
-                inbox: 0,
-                sent: 0,
-                starred: 0,
-                draft: 0,
-                trash: 0,
-            },
+            isReview: false,
         };
     },
     created() {
         this.getFilteredEmails();
+        this.isReview = false;
+    },
+    mounted() {
+        this.isReview = false;
     },
     methods: {
+        sortEmails(sortBy) {
+            console.log(sortBy);
+            switch (sortBy) {
+                case "ab":
+                    this.emails = this.emails.sort((email1, email2) =>
+                        email1.subject.localeCompare(email2.subject)
+                    );
+                    console.log(this.emails);
+                    break;
+                case "date":
+                    this.emails = this.emails.sort(
+                        (email1, email2) => email1.sentAt - email2.sentAt
+                    );
+                    break;
+            }
+        },
+        changeReview(isReview) {
+            console.log(isReview);
+            this.isReview = isReview;
+        },
         changedCriteriaTxt(txt) {
             if (this.criteria.txt === txt) return;
             this.criteria.txt = txt;
@@ -62,9 +79,6 @@ export default {
         trashEmail(email) {
             console.log(email);
             email.isTrash = true;
-            // emailService.save(email).then(() => {
-            //     this.getFilteredEmails();
-            // });
             this.saveEmail(email);
         },
         removeEmail(emailId) {
@@ -78,11 +92,6 @@ export default {
             emailService.save(email).then(() => {
                 this.getFilteredEmails();
             });
-        },
-    },
-    computed: {
-        emailsToShow() {
-            // return
         },
     },
     components: {
