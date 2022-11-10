@@ -1,8 +1,45 @@
+.add-note {
+    display: flex;
+    flex-direction: column;
+} 
+
 .add-note-inputs {
     display: flex;
     flex-direction: column;
-    max-width: 50%;
-    margin: auto;
+    margin: auto; 
+}
+
+.add-note-inputs button {
+    min-height: 30px
+}
+
+.add-note-inputs .controler {
+    display: flex;
+}
+
+.add-note-inputs .controler > *{
+    flex: 1;
+}
+
+.add-note-inputs .controler .active {
+    background-color: #cac0be;
+}
+
+.white {
+    border: 1px solid black;
+}
+
+.color-container {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 20px;
+}
+
+.color-container > * {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .note-lists {
