@@ -11,9 +11,11 @@ export default {
     <section class="keep-app main-layout">
         <note-filter/>
         <note-list
+        @setPin="setPin"
         v-if="notes"
         :notes="notes"/>
-        <router-view/> 
+        <router-view
+        @setPin="setPin"/> 
     </section>
     `,
 
@@ -27,8 +29,15 @@ export default {
         noteService.query()
             .then(notes => {
                 this.notes = notes
-                console.log(this.notes)
             })
+    },
+
+    methods: {
+        setPin(noteId) {
+            const note = this.notes.find(note => note.id === noteId)
+            note.isPinned = !note.isPinned
+            noteService.save(note).then(console.log(note.isPinned))
+        }
     },
 
     components: {

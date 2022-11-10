@@ -18,17 +18,7 @@ function _createNotes() {
     // let notes
     if (!notes || !notes.length) {
         notes = [
-            {
-                id: utilService.makeId(),
-                type: "note-txt",
-                isPinned: false,
-                info: {
-                    txt: "Fullstack Me Baby!"
-                },
-                style: {
-                    backgroundColor: "#dfe6e9"
-                }
-            },
+
             {
                 id: utilService.makeId(),
                 type: "note-img",
@@ -61,6 +51,7 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
+                    title: 'yeah!',
                     txt: "Just a text..."
                 },
                 style: {
@@ -70,13 +61,40 @@ function _createNotes() {
 
             {
                 id: utilService.makeId(),
-                type: "note-todos",
+                type: "note-txt",
                 isPinned: false,
                 info: {
-                    label: "Set my stuff now!",
+                    title: 'Pulk/Pull Revolving Doors',
+                    txt: `There are barn doors.\n
+                            And there are revolving doors.\n
+                            Doors on the rudders of big ships.\n
+                            We are revolving doors.\n
+                            There are doors that open by themselves.\n
+                            There are sliding doors.\n
+                            And there are secret doors.\n
+                            There are doors that lock
+                            And doors that don't.\n
+                            There are doors that let you in
+                            And out
+                            But never open.\n
+                            But there are trapdoors.\n
+                            That you can't come back from.`
+                },
+                style: {
+                    backgroundColor: "#dfe6e9"
+                }
+            },
+
+            {
+                id: utilService.makeId(),
+                type: "note-todos",
+                isPinned: true,
+                info: {
+                    label: "Milk list!",
                     todos: [
-                        { txt: "Shiping liscence", doneAt: null },
-                        { txt: "Naming power", doneAt: 187111111 }
+                        { txt: "Milk", doneAt: null },
+                        { txt: "More milk", doneAt: 187111111 },
+                        { txt: "Enough milk", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -98,7 +116,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: false,
+                isPinned: true,
                 info: {
                     label: "Understand VUE!",
                     todos: [
@@ -118,6 +136,7 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
+                    title: 'yeah!',
                     txt: "Just a text..."
                 },
                 style: {

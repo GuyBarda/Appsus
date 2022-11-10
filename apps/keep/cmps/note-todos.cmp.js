@@ -5,8 +5,10 @@ export default {
             <h3>{{label}}</h3>
             <ul class="clean-list todos-list">
                 <li v-for="todo in todos">
+                    <label >
                     <input type="checkbox" />
-                    <label >{{todo.txt}}</label>
+                    {{todo.txt}}</label>
+                    <button @click.prevernt="remove" class="remove-todo-btn">x</button>
                 </li>
             </ul>
         </div>
@@ -20,6 +22,12 @@ export default {
     },
 
     created() {
-    }
+    },
+
+    methods: {
+        remove() {
+            console.log('remove todo');
+        },
+    },
 
 }
