@@ -1,6 +1,6 @@
 export default {
     template: `
-        <header class="app-header">
+        <header class="app-header main-layout">
         <router-link to="/">Appsus</router-link>
             <nav class="header-nav">
                 <router-link to="/email">Email</router-link>|

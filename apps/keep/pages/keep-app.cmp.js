@@ -7,14 +7,15 @@ import noteDetails from "./note-details.cmp.js" //
 
 export default {
     template: `
-    <h1>hello keep!</h1>
     <section class="keep-app main-layout">
+        <h1>hello keep!</h1>
         <note-filter/>
         <note-list
         @setPin="setPin"
         v-if="notes"
         :notes="notes"/>
         <router-view
+        @updateData="getNotes"
         @setPin="setPin"/> 
     </section>
     `,
@@ -26,18 +27,25 @@ export default {
     },
 
     created() {
-        noteService.query()
-            .then(notes => {
-                this.notes = notes
-            })
+        this.getNotes()
     },
 
     methods: {
+        getNotes() {
+            this.notes = null
+            console.log('getNotes');
+            noteService.query()
+                .then(notes => {
+                    this.notes = notes
+                })
+        },
+
         setPin(noteId) {
             const note = this.notes.find(note => note.id === noteId)
             note.isPinned = !note.isPinned
             noteService.save(note).then(console.log(note.isPinned))
-        }
+        },
+
     },
 
     components: {

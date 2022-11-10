@@ -1,16 +1,26 @@
 .app-header {
     background-color: var(--clr5);
     color: var(--secondary-clr1);
-    padding: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-block: 10px;
 }
 
 .app-header .header-nav {
     display: flex;
     gap: 10px;
     text-align: center;
+    align-items: center;
+}
+
+.app-header .header-nav a{
+    /* min-height: 0; */
+    line-height: 48px;
+}
+
+.header-nav .router-link-exact-active {
+    color: red;
 }
 
 @media (max-width: 720px) {

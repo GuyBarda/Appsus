@@ -13,7 +13,8 @@ export default {
               
               <section class="note-type">
                 <component :is="note.type"  
-                :info="note.info">
+                :info="note.info"
+                @editTxt="editTxt">
                 </component>
               </section>
 
@@ -50,6 +51,30 @@ export default {
     setPin(noteId) {
       console.log(noteId)
       this.$emit('setPin', noteId)
+    },
+
+    editTxt(txt) {
+      console.log(txt, this.note);
+      this.note.info.txt = txt
+      noteService.save(this.note)
+        .then(note => {
+          this.note = note
+          this.$emit('updateData')
+
+        })
+
+
+
+
+
+
+      // noteService.get(this.note.id)
+      //   .then(note => {
+      //     note.info.txt = txt
+      //   })
+
+      // this.note.info.txt = txt
+
     },
 
     click() {
