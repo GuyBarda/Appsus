@@ -10,7 +10,8 @@ export default {
     template: `
     <section class="keep-app main-layout">
         <h1>hello keep!</h1>
-        <add-note/>
+        <add-note
+        @updateData="getNotes"/>
         <!-- <note-filter/> -->
         <note-list
         v-if="notes"
