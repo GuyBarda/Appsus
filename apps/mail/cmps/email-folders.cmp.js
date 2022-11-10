@@ -2,7 +2,8 @@ export default {
     props: [""],
     template: `
             <div class="email-folders">
-                <button class="compose" @click="$emit('create')">Compose</button>
+                <!-- <button class="compose" @click="$emit('create')">Compose</button> -->
+                <router-link to="/email/compose" >Compose</router-link>
                 <button @click="changeCriteria('status' ,'inbox', $event)">Inbox</button>
                 <button @click="changeCriteria('status' , 'starred', $event)">Starred</button>
                 <button @click="changeCriteria('isRead' , true , $event)">Read</button>

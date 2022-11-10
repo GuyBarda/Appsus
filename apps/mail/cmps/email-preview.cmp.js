@@ -9,8 +9,12 @@ export default {
                 <p>{{formattedDate}}</p>
                 <div class="actions ">
                     <button v-if="email.isTrash" @click.prevent="$emit('remove', email.id)">remove</button>
-                    <button v-else @click.prevent="$emit('trash', email)">trash</button>
-                    <button @click.prevent="$emit('star')">star</button>
+                    <button v-else @click.prevent="$emit('trash', email)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                    <button @click.prevent="$emit('star')">
+                        <i class="fa-regular fa-star"></i>
+                    </button>
                 </div>
             </div>
 
