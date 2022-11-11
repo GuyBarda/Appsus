@@ -6,7 +6,7 @@ const loggedinUser = {
     fullname: "Mahatma Appsus",
 };
 
-const EMAILS_KEY = "emails";
+const EMAILS_KEY = "emailsDB";
 _createEmails();
 
 export default {
@@ -21,11 +21,33 @@ function query(criteria = null) {
     if (!criteria) return storageService.query(EMAILS_KEY);
     const { email: logEmail } = loggedinUser;
     return storageService.query(EMAILS_KEY).then((emails) => {
+        //filter by text
         emails = emails.filter(
             (email) =>
                 email.subject.includes(criteria.txt) ||
                 email.body.includes(criteria.txt)
         );
+
+        //by trash
+        if (criteria.isTrash) return emails.filter((email) => email.isTrash);
+
+        //by star
+        if (criteria.isStarred)
+            emails = emails.filter(
+                (email) => email.isStarred && !email.isTrash
+            );
+
+        //by read
+        emails = criteria.isRead
+            ? emails.filter((email) => email.isRead)
+            : emails;
+
+        //by draft
+        emails = criteria.isDraft
+            ? emails.filter((email) => email.isDraft)
+            : emails;
+
+        //by status
         switch (criteria.status) {
             case "inbox":
                 emails = emails.filter(
@@ -34,7 +56,10 @@ function query(criteria = null) {
                 break;
             case "sent":
                 emails = emails.filter(
-                    (email) => email.from === logEmail && !email.isTrash
+                    (email) =>
+                        email.from === logEmail &&
+                        !email.isTrash &&
+                        !email.isDraft
                 );
                 break;
             case "trash":
@@ -45,9 +70,7 @@ function query(criteria = null) {
                 break;
         }
 
-        return criteria.isRead
-            ? emails.filter((email) => email.isRead)
-            : emails;
+        return emails;
     });
 }
 
@@ -74,6 +97,9 @@ function getEmptyEmail() {
         sentAt: 0,
         from: loggedinUser.email,
         to: "",
+        isDraft: null,
+        isStarred: null,
+        isTrash: null,
     };
 }
 
@@ -88,20 +114,22 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551142930594,
                 from: "momo@momo.com",
-                to: "OG@appsus.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
                 subject: "Hello Guy!",
-                body: "Would love to catch up sometimes",
-                isRead: false,
+                body: "wanted: frontend developer for yadayada on betlehem",
+                isRead: true,
                 sentAt: 1551133920594,
                 from: "momo@momo.com",
-                to: "OG@appsus.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -110,20 +138,22 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1531133930594,
                 from: "momo@momo.com",
-                to: "OG@appsus.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
                 subject: "Yossi Have a birthday!",
-                body: "Would love to catch up sometimes",
-                isRead: false,
+                body: "Wish him happy birthday here! ",
+                isRead: true,
                 sentAt: 1555133930594,
-                from: "momo@momo.com",
-                to: "OG@appsus.com",
+                from: "yossifacebook@facebook.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -131,10 +161,11 @@ function _createEmails() {
                 body: "so cool project. would love to see it more",
                 isRead: false,
                 sentAt: 1551133930574,
-                from: "OG@appsus.com",
+                from: loggedinUser.email,
                 to: "momo@momo.com",
-                isDraft: true,
+                isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -143,9 +174,10 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551133960594,
                 from: "momo@momo.com",
-                to: "OG@appsus.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -154,9 +186,58 @@ function _createEmails() {
                 isRead: false,
                 sentAt: 1551133930598,
                 from: "momo@momo.com",
-                to: "OG@appsus.com",
+                to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
+            },
+            {
+                id: utilService.makeId(),
+                subject: "Miss you!",
+                body: "bla bla",
+                isRead: false,
+                sentAt: 1553123930598,
+                from: loggedinUser.email,
+                to: "",
+                isDraft: true,
+                isTrash: false,
+                isStarred: false,
+            },
+            {
+                id: utilService.makeId(),
+                subject: "oops",
+                body: "bsfkjqwhov",
+                isRead: false,
+                sentAt: 1553123930598,
+                from: loggedinUser.email,
+                to: "",
+                isDraft: true,
+                isTrash: false,
+                isStarred: false,
+            },
+            {
+                id: utilService.makeId(),
+                subject: "Lots of money for you",
+                body: "I have alot of money I am dont want this anymore and want to send to you please sent email and password ",
+                isRead: true,
+                sentAt: 1553123950598,
+                from: "nigeriaprince@nigeria.com",
+                to: loggedinUser.email,
+                isDraft: false,
+                isTrash: false,
+                isStarred: false,
+            },
+            {
+                id: utilService.makeId(),
+                subject: "Gabe sent you a gift",
+                body: "gabe has sent you a gift. Open it in the 48 hours or it'll be gone forever",
+                isRead: true,
+                sentAt: 1553123950598,
+                from: "nigeriaprince@nigeria.com",
+                to: loggedinUser.email,
+                isDraft: false,
+                isTrash: false,
+                isStarred: true,
             },
         ];
         utilService.saveToStorage(EMAILS_KEY, emails);

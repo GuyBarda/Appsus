@@ -43,8 +43,15 @@ export default {
     },
 
     methods: {
-        setTodo(todo) {
-            this.$emit('setTodo', todo)
+        saveAsEmail() {
+            const {
+                info: { txt, title },
+            } = this.note;
+            const email = {
+                subject: title,
+                body: txt,
+            };
+            this.$router.push("/email/compose/" + JSON.stringify(email));
         },
         toggleColor() {
             this.isColorOpen = !this.isColorOpen

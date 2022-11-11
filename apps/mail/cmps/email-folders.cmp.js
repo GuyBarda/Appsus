@@ -3,7 +3,7 @@ export default {
     template: `
             <div class="email-folders">
                 <!-- <button class="compose" @click="$emit('create')">Compose</button> -->
-                <router-link to="/email/compose/''" >Compose</router-link>
+                <router-link to="/email/compose/1" >Compose</router-link>
                 <button @click="changeCriteria('status' ,'inbox', $event)">Inbox</button>
                 <button @click="changeCriteria('status' , 'starred', $event)">Starred</button>
                 <button @click="changeCriteria('isRead' , true , $event)">Read</button>
@@ -25,14 +25,14 @@ export default {
     },
     methods: {
         changeCriteria(key, value, ev) {
-            (this.criteria = {
+            this.criteria = {
                 status: "",
                 txt: "",
                 isRead: null,
                 isStared: null,
                 lables: ["important", "romantic"],
-            }),
-                ev.target.classList.add("active");
+            };
+            ev.target.classList.add("active");
             this.criteria[key] = value;
             console.log(this.criteria);
             this.$emit("filter", this.criteria);
