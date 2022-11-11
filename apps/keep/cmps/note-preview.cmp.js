@@ -44,9 +44,15 @@ export default {
 
     methods: {
         saveAsEmail() {
-            const {
-                info: { txt, title },
-            } = this.note;
+
+            if (this.note.type === 'note-txt') {
+                var { info: { txt, title } } = this.note;
+            } else if (this.note.type === 'note-img') {
+                var { info: { title, url } } = this.note;
+            } else if (this.note.type === 'note-todos') {
+                var { info: { label, todos } } = this.note;
+            }
+
             const email = {
                 subject: title,
                 body: txt,
