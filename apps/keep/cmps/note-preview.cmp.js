@@ -38,10 +38,6 @@ export default {
         }
     },
 
-    mounted() {
-        // console.log(this.$refs)
-    },
-
     methods: {
         saveAsEmail() {
 
