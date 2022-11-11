@@ -96,6 +96,9 @@
     background-color: transparent;
 }
 
+.email-preview .actions input {
+    opacity: 0;
+}
 .email-preview .actions button:hover {
     background-color: rgb(220, 220, 220);
 }
