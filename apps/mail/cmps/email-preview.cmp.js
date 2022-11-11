@@ -18,7 +18,10 @@ export default {
                     <!-- <button @click.prevent="$emit('star')">
                         <i class="fa-regular fa-star"></i>
                     </button> -->
-                    <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
+                    <label @click.prevent.stop="$emit('save', email)" for="read">
+                        <i class="fa-regular fa-envelope-open"></i>
+                    </label>
+                    <input name="read" id="read" type="checkbox" v-model="email.isRead"/>
                 </div>
             </div>
         </router-link>
