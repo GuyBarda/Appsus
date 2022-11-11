@@ -55,7 +55,8 @@ export default {
                     break;
                 case "note-todos":
                     email.subject = info.label;
-                    email.body = Object.values(info.todos);
+                    const arrTodos = info.todos.map((todo) => todo.txt);
+                    email.body = arrTodos.join(", ");
                     break;
             }
             this.$router.push("/email/compose/" + JSON.stringify(email));
