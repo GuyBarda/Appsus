@@ -28,6 +28,15 @@ function query(criteria = null) {
                 email.body.includes(criteria.txt)
         );
 
+        //by trash
+        if (criteria.isTrash) return emails.filter((email) => email.isTrash);
+
+        //by star
+        if (criteria.isStarred)
+            emails = emails.filter(
+                (email) => email.isStarred && !email.isTrash
+            );
+
         //by read
         emails = criteria.isRead
             ? emails.filter((email) => email.isRead)
@@ -37,6 +46,7 @@ function query(criteria = null) {
         emails = criteria.isDraft
             ? emails.filter((email) => email.isDraft)
             : emails;
+
         //by status
         switch (criteria.status) {
             case "inbox":
@@ -87,6 +97,9 @@ function getEmptyEmail() {
         sentAt: 0,
         from: loggedinUser.email,
         to: "",
+        isDraft: null,
+        isStarred: null,
+        isTrash: null,
     };
 }
 
@@ -104,6 +117,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -115,6 +129,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -126,6 +141,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -137,6 +153,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -148,6 +165,7 @@ function _createEmails() {
                 to: "momo@momo.com",
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -159,6 +177,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -170,6 +189,7 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -181,6 +201,7 @@ function _createEmails() {
                 to: "",
                 isDraft: true,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -192,6 +213,7 @@ function _createEmails() {
                 to: "",
                 isDraft: true,
                 isTrash: false,
+                isStarred: false,
             },
             {
                 id: utilService.makeId(),
@@ -203,6 +225,19 @@ function _createEmails() {
                 to: loggedinUser.email,
                 isDraft: false,
                 isTrash: false,
+                isStarred: false,
+            },
+            {
+                id: utilService.makeId(),
+                subject: "Gabe sent you a gift",
+                body: "gabe has sent you a gift. Open it in the 48 hours or it'll be gone forever",
+                isRead: true,
+                sentAt: 1553123950598,
+                from: "nigeriaprince@nigeria.com",
+                to: loggedinUser.email,
+                isDraft: false,
+                isTrash: false,
+                isStarred: true,
             },
         ];
         utilService.saveToStorage(EMAILS_KEY, emails);

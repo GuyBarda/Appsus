@@ -3,7 +3,10 @@ export default {
     template: `
         <router-link @click="goTo" :to="'/email/' +email.id">
             <div class="email-preview" :class="{read: email.isRead}">
-                <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
+                <!-- <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/> -->
+                <button class="btn-star" @click.prevent.stop="$emit('star')">
+                    <i class="fa-regular fa-star"></i>
+                </button>
                 <p>{{email.from}}</p>
                 <p>{{email.subject}}-<span>{{email.body}}</span></p>
                 <p>{{formattedDate}}</p>
@@ -12,9 +15,10 @@ export default {
                     <button v-else @click.prevent="$emit('trash', email)">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
-                    <button @click.prevent="$emit('star')">
+                    <!-- <button @click.prevent="$emit('star')">
                         <i class="fa-regular fa-star"></i>
-                    </button>
+                    </button> -->
+                    <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/>
                 </div>
             </div>
         </router-link>

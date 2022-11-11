@@ -12,8 +12,8 @@ export default {
         <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
         <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="starEmail"  :emails="emails"></email-list>
-        <!-- <h3 v-else>no emails found</h3> -->
-        <router-view v-else @added="refreshEmails" @close="isCreate = false"></router-view>
+        <h3 v-else>no emails found</h3>
+        <router-view @added="refreshEmails" @close="isCreate = false"></router-view>
     </section>`,
     data() {
         return {

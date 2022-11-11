@@ -27,7 +27,14 @@ export default {
     `,
     methods: {
         saveAsEmail() {
-            this.$router.push("/email/compose?" + JSON.stringify(this.note));
+            const {
+                info: { txt, title },
+            } = this.note;
+            const email = {
+                subject: title,
+                body: txt,
+            };
+            this.$router.push("/email/compose/" + JSON.stringify(email));
         },
         setSelectedNote(noteId) {
             this.$emit("setSelectedNote", noteId);

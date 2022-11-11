@@ -17,11 +17,12 @@ export default {
     `,
     data() {
         return {
-            email: emailService.getEmptyEmail(),
+            email: null,
         };
     },
     created() {
-        // this.email = emailService.getEmptyEmail();
+        this.email = emailService.getEmptyEmail();
+        this.loadEmail();
     },
     methods: {
         addEmail() {
@@ -38,21 +39,21 @@ export default {
             }
             this.$router.push("/email");
         },
+        loadEmail() {
+            const note = JSON.parse(this.$route.params.obj);
+            this.email.subject = note.subject;
+            this.email.body = note.body;
+        },
     },
     computed: {
         obj() {
-            console.log(this.$route.params);
             return this.$route.params.obj;
         },
     },
     watch: {
         obj() {
-            console.log(this.$route.params.obj);
-            if (this.$route.params.obj) return;
-            const note = JSON.parse(this.$route.params.obj);
-            console.log(note);
-            this.email.subject = note.title;
-            this.email.body = note.txt;
+            if (this.$route.params.obj !== 1 || !this.$route.params.obj) return;
+            this.loadEmail();
         },
     },
 };
