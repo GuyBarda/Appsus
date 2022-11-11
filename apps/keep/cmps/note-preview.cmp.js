@@ -55,7 +55,7 @@ export default {
                     break;
                 case "note-todos":
                     email.subject = info.label;
-                    email.body = info.todos.join(",");
+                    email.body = Object.values(info.todos);
                     break;
             }
             this.$router.push("/email/compose/" + JSON.stringify(email));
