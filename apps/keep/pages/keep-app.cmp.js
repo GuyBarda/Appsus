@@ -7,6 +7,7 @@ import noteList from "../cmps/note-list.cmp.js"
 import noteDetails from "./note-details.cmp.js" //
 
 export default {
+
     template: `
     <section class="keep-app main-layout">
         <h1>hello keep!</h1>
@@ -16,10 +17,12 @@ export default {
         <note-list
         v-if="notes"
         @setPin="setPin"
+        @setTodo="setTodo"
         :notes="notes"/>
         <router-view
         @updateData="getNotes"
-        @setPin="setPin"/> 
+        @setPin="setPin"
+        @setTodo="setTodo"/> 
     </section>
     `,
 
@@ -48,6 +51,21 @@ export default {
             noteService.save(note).then(console.log(note.isPinned))
         },
 
+        setTodo(todo) {
+            const { todoId, noteId } = todo
+
+            noteService.get(noteId)
+                .then(note => {
+                    const todoIdx = note.info.todos.findIndex(todo => todo.id === todoId)
+                    if (!note.info.todos[todoIdx].doneAt) {
+                        note.info.todos[todoIdx].doneAt = Date.now()
+                    } else {
+                        note.info.todos[todoIdx].doneAt = null
+                    }
+                    noteService.save(note)
+                        .then(console.log('sace'))
+                })
+        }
     },
 
     components: {

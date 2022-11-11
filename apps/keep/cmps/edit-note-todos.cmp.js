@@ -1,39 +1,58 @@
-import noteService from "../services/note.service.js"
+
 
 export default {
     props: ['note'],
     template: `
         <div class="note-todos-container">
             <h3 contenteditable @input="saveContent($event,'label')">{{note.info.label}}</h3>
-            <ul class="clean-list todos-list">
-                <li v-for="todo in note.info.todos">
-                    <label >
-                    <input @click.stop type="checkbox" />
-                    {{todo.txt}}</label>
-                    <button class="remove-todo-btn">x</button>
+            <ul class="clean-list todos-list undone-list">
+
+                <li v-for="(todo , idx) in note.info.todos">
+                    <div v-if="!todo.doneAt">
+                        <input @click.stop="todoState(todo.id , note.id)" type="checkbox" />
+                        <span contenteditable @input="saveContentTxt($event , idx)">
+                            {{todo.txt}}
+                        </span>
+                        <button class="remove-todo-btn">x</button>
+                    </div>
                 </li>
             </ul>
-            <button @click="save">x</button>
+        <hr />
+              <ul class="clean-list todos-list undone-list">
+
+                <li v-for="(todo , idx) in note.info.todos">
+                    <div v-if="todo.doneAt">
+                        <input @click.stop="todoState(todo.id , note.id)" type="checkbox" />
+                        <span contenteditable @input="saveContentTxt($event , idx)">
+                            {{todo.txt}}
+                        </span>
+                        <button class="remove-todo-btn">x</button>
+                    </div>
+                </li>
+            </ul>
         </div>
     `,
 
     methods: {
         saveContent(ev, key) {
+            console.log(key);
             this.note.info[key] = ev.target.innerText
         },
 
-        save() {
-            noteService.save(this.note)
-                .then(note => {
-                    // showSuccessMsg(`Car saved (Car id: ${car.id})`)
-                    this.$router.push('/keep')
-                    this.$emit('updateData')
-                })
-                .catch(err => {
-                    console.log('OOps:', err)
-                    // showErrorMsg(`Cannot save car`)
-                })
+        saveContentTxt(ev, idx) {
+            console.log(idx);
+            this.note.info.todos[idx].txt = ev.target.innerText
         },
+
+        todoState(todoId, noteId) {
+            const todo = {
+                todoId: todoId,
+                noteId: noteId
+            }
+
+            this.$emit('setTodo', todo)
+        }
+
     },
 
 }

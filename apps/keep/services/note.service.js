@@ -41,7 +41,7 @@ function _createNotes() {
                 type: "note-img",
                 isPinned: false,
                 info: {
-                    url: "http://some-img/me",
+                    url: "http://coding-academy.org/books-photos/14.jpg",
                     title: "Bobi and Me"
                 },
                 style: {
@@ -55,8 +55,8 @@ function _createNotes() {
                 info: {
                     label: "Get my knifes together",
                     todos: [
-                        { txt: "kill everyone", doneAt: null },
-                        { txt: "dont kill cats", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "kill everyone", doneAt: null },
+                        { id: utilService.makeId(), txt: "dont kill cats", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -82,8 +82,8 @@ function _createNotes() {
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "Coding power", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -97,8 +97,8 @@ function _createNotes() {
                 info: {
                     label: "Set my stuff on fire!",
                     todos: [
-                        { txt: "only liscence", doneAt: null },
-                        { txt: "just power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "only liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "just power", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -151,9 +151,10 @@ function _createNotes() {
                 info: {
                     label: "Milk list!",
                     todos: [
-                        { txt: "Milk", doneAt: null },
-                        { txt: "More milk", doneAt: 187111111 },
-                        { txt: "Enough milk", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Milk", doneAt: null },
+                        { id: utilService.makeId(), txt: "More milk", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Enough milk", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Add the function addMilk(cowId), it return milk from the local ranch", doneAt: null }
                     ]
                 },
                 style: {
@@ -177,7 +178,7 @@ function _createNotes() {
                 type: "note-img",
                 isPinned: false,
                 info: {
-                    url: "http://some-img/me",
+                    url: "http://coding-academy.org/books-photos/2.jpg",
                     title: "Kuki and Me"
                 },
                 style: {
@@ -219,11 +220,11 @@ function _createNotes() {
                 info: {
                     label: "Understand VUE!",
                     todos: [
-                        { txt: "Emit", doneAt: null },
-                        { txt: "Inbar", doneAt: null },
-                        { txt: "Work hard!", doneAt: null },
-                        { txt: "Emit again", doneAt: null },
-                        { txt: "Loops", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Emit", doneAt: null },
+                        { id: utilService.makeId(), txt: "Inbar", doneAt: null },
+                        { id: utilService.makeId(), txt: "Work hard!", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "Emit again", doneAt: null },
+                        { id: utilService.makeId(), txt: "Loops", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -279,8 +280,8 @@ function _createNotes() {
                 info: {
                     label: "Set my stuff now!",
                     todos: [
-                        { txt: "Shiping liscence", doneAt: null },
-                        { txt: "Naming power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "Shiping liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "Naming power", doneAt: 187111111 }
                     ]
                 },
                 style: {
@@ -294,8 +295,8 @@ function _createNotes() {
                 info: {
                     label: "Set my stuff on water!",
                     todos: [
-                        { txt: "only liscence", doneAt: null },
-                        { txt: "water power", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "only liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "water power", doneAt: 187111111 }
                     ]
                 },
                 style: {

@@ -1,18 +1,21 @@
 export default {
-    props: ['info'],
+    props: ['note'],
     template: `
         <div class="note-img-container">
-            <h3>{{title}}</h3>
-            <h3>{{imgUrl}}</h3>
-            <!-- <img src="imgUrl" alt="no img found" /> -->
+            <img :src="imgUrl" alt="no img found" />
+            <h3>{{note.info.title}}</h3>
         </div>
     `,
 
     data() {
         return {
-            title: this.info.title,
-            imgUrl: this.info.url
+
         }
     },
 
+    computed: {
+        imgUrl() {
+            return this.note.info.url
+        },
+    }
 }

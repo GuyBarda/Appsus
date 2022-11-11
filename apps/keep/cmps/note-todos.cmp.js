@@ -1,42 +1,44 @@
 export default {
-    props: ['info'],
+    props: ['note'],
     template: `
         <div class="note-todos-container">
-            <h3>{{label}}</h3>
-            <ul class="clean-list todos-list">
-                <li v-for="todo in todos">
-                    <label >
-                    <input @click.stop type="checkbox" />
-                    {{todo.txt}}</label>
-                    <button @click.prevernt="remove" class="remove-todo-btn">x</button>
+            <h3>{{note.info.label}}</h3>
+            <ul class="clean-list todos-list undone-list">
+                <li v-for="todo in note.info.todos">
+                    <div v-if="!todo.doneAt">
+                        <label @click.stop ><input @click.stop="todoState(todo.id , note.id)" type="checkbox" />{{todo.txt}}</label>
+                    </div>
                 </li>
             </ul>
+            <hr />
+            <ul class="clean-list todos-list done-list">
+                <li v-for="todo in note.info.todos">
+                    <div v-if="todo.doneAt">
+                        <label @click.stop><input @click.stop="todoState(todo.id , note.id)" type="checkbox" Checked />{{todo.txt}}</label>
+                    </div>
+                </li>
+            </ul>
+
+            
         </div>
     `,
 
     data() {
         return {
-            label: this.info.label,
-            todos: this.info.todos,
-            // id: this.$route.params.id
 
         }
     },
 
-    created() {
-        // this.id = this.$route.params.id
-    },
-
     methods: {
-        remove() {
-            console.log('remove todo');
-        },
+        todoState(todoId, noteId) {
+            const todo = {
+                todoId: todoId,
+                noteId: noteId
+            }
+
+            this.$emit('setTodo', todo)
+        }
     },
 
-    computed: {
-        // showRemoveBtn() {
-        //     return this.id === true
-        // }
-    }
 
 }

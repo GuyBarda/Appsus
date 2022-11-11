@@ -1,5 +1,7 @@
 import noteService from "../services/note.service.js"
 
+import colorPicker from "./color-picker.cmp.js"
+
 export default {
     props: [''],
     template: `
@@ -14,22 +16,14 @@ export default {
                     <button type="button"><i class="fa-solid fa-lg fa-image"></i></button>
                     <button @click="toggleColor" type="button"><i class="fa-solid fa-lg fa-palette"></i></button>
                 </div>
-
+                
                 <button>Add note!</button>
-
-                <div v-if="isColorOpen" class="color-container">
-                    <div @click="setBgColor('#d63031')" style="background-color: #d63031;"></div>
-                    <div @click="setBgColor('#e17055')" style="background-color: #e17055;"></div>
-                    <div @click="setBgColor('#fdcb6e')" style="background-color: #fdcb6e;"></div>
-                    <div @click="setBgColor('#0984e3')" style="background-color: #0984e3;"></div>
-                    <div @click="setBgColor('#00cec9')" style="background-color: #00cec9;"></div>
-                    <div class="white" @click="setBgColor('white')"></div>
-                </div>
+                
+                <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>
             </form>
-
+            
     </section>
     ` ,
-
     data() {
         return {
             isColorOpen: false,
@@ -37,23 +31,16 @@ export default {
             backgroundColor: 'white'
         }
     },
-
-
     methods: {
-
         toggleColor() {
             this.isColorOpen = !this.isColorOpen
         },
-
         setBgColor(bgColor) {
             this.backgroundColor = bgColor
         },
-
-
         setPin() {
             this.isPinned = !this.isPinned
         },
-
         add(ev) {
             console.log(ev.target[0].value)
             console.log(ev.target[1].value)
@@ -66,9 +53,7 @@ export default {
                     this.$emit('updateData')
                 })
         },
-
     },
-
     computed: {
         isPin() {
             return { active: this.isPinned === true }
@@ -77,7 +62,8 @@ export default {
         inputBgColor() {
             return { backgroundColor: this.backgroundColor }
         }
-
-    }
-
+    },
+    components: {
+        colorPicker,
+    },
 }

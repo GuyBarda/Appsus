@@ -13,8 +13,8 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
-                        @setSelectedNote="setSelectedNote"
                         @setPin="setPin"
+                        @setTodo="setTodo"
                         v-if="note.isPinned"
                         :note="note"/>
                     </li>
@@ -27,8 +27,8 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
-                        @setSelectedNote="setSelectedNote"
                         @setPin="setPin"
+                        @setTodo="setTodo"
                         v-if="!note.isPinned"
                         :note="note"/>  
                     </li>
@@ -41,13 +41,15 @@ export default {
     `,
 
     methods: {
-        setSelectedNote(noteId) {
-            this.$emit('setSelectedNote', noteId)
+        setTodo(todo) {
+            this.$emit('setTodo', todo)
         },
-
         setPin(noteId) {
             this.$emit('setPin', noteId)
-        }
+        },
+        setBgColor(bgColor) {
+            this.backgroundColor = bgColor
+        },
     },
 
     computed: {

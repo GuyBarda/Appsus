@@ -3,17 +3,19 @@ import noteService from "../services/note.service.js";
 import noteTxt from "../cmps/edit-note-txt.cmp.js"
 import noteImg from "../cmps/edit-note-img.cmp.js"
 import noteTodos from "../cmps/edit-note-todos.cmp.js"
+import colorPicker from "../cmps/color-picker.cmp.js"
 
 export default {
   template: `
 
-       <div v-if="note" class="modal-mask">
+       <div @click.stop.prevent="save" v-if="note" class="modal-mask">
           <div class="modal-wrapper">
-            <div class="modal-container" :style="previewStyle">
+            <div @click.stop.prevent="" class="modal-container" :style="previewStyle">
               
               <section class="note-type">
                 <component :is="note.type"  
                 :note="note"
+                @setTodo="setTodo"
                 @updateData="$emit('updateData')">
                 </component>
               </section>
@@ -22,9 +24,11 @@ export default {
                 <button @click.prevernt="setPin(note.id)"><i class="fa-solid fa-lg fa-map-pin"></i></button>
                 <button @click.prevernt="click"><i class="fa-solid fa-lg fa-user-plus"></i></button>
                 <button @click.prevernt="click"><i class="fa-solid fa-lg fa-image"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-palette"></i></button>
+                <button @click.prevernt="toggleColor"><i class="fa-solid fa-lg fa-palette"></i></button>
               </section>
               
+              <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>
+            
             </div>
           </div>
         </div>
@@ -33,6 +37,7 @@ export default {
   data() {
     return {
       note: null,
+      isColorOpen: false,
     }
   },
 
@@ -46,33 +51,52 @@ export default {
   },
 
   methods: {
+
+    save() {
+      noteService.save(this.note)
+        .then(note => {
+          // showSuccessMsg(`Car saved (Car id: ${car.id})`)
+          this.$router.push('/keep')
+          this.$emit('updateData')
+        })
+        .catch(err => {
+          console.log('OOps:', err)
+          // showErrorMsg(`Cannot save car`)
+        })
+    },
+
+    clicked() {
+      console.log('clicked');
+    },
+
+    setBgColor(bgColor) {
+      console.log(bgColor)
+      this.note.style.backgroundColor = bgColor
+      noteService.save(this.note)
+        .then(console.log(bgColor))
+
+        .catch(err => {
+          console.log('OOps:', err)
+        })
+    },
+
+    toggleColor() {
+      this.isColorOpen = !this.isColorOpen
+      console.log('sss');
+    },
     setPin(noteId) {
-      console.log(noteId)
       this.$emit('setPin', noteId)
     },
 
-    editTxt(txt) {
-      console.log(txt, this.note);
-      this.note.info.txt = txt
-      noteService.save(this.note)
-        .then(note => {
-          this.note = note
-          this.$emit('updateData')
-
-        })
+    setTodo(todo) {
+      this.$emit('setTodo', todo)
     },
 
     click() {
       console.log('click');
     },
   },
-  watch: {
-    note: {
-      handler() {
-        console.log('Something changed')
-      },
-    }
-  },
+
   computed: {
     previewStyle() {
       return { backgroundColor: this.note.style.backgroundColor }
@@ -82,5 +106,6 @@ export default {
     noteTxt,
     noteImg,
     noteTodos,
+    colorPicker
   }
 };

@@ -1,6 +1,7 @@
 .add-note {
     display: flex;
     flex-direction: column;
+    position: relative;
 } 
 
 .add-note-inputs {
@@ -29,19 +30,6 @@
     border: 1px solid black;
 }
 
-.color-container {
-    display: flex;
-    justify-content: space-between;
-    padding-block: 20px;
-}
-
-.color-container > * {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
 .note-lists {
     display: flex;
     flex-direction: column;
@@ -55,6 +43,7 @@
 }
 
 .note-preview {
+    position: relative;
     min-width: fit-content;
     border: 1px solid var(--clr5);
     border-radius: 4px;
@@ -66,19 +55,64 @@
 }
 
 .preview-controller {
+    /* position: relative; */
     display: flex;
-    /* border-top: 1px solid black; */
     margin-top: 10px;
     padding-top: 10px;
 }
 
 .preview-controller button {
-   flex: 1;
-   cursor: pointer;
+    flex: 1;
+    cursor: pointer;
     background-color: transparent;
     min-width: 0px;
     min-height: 0px;
     border: none;
+}
+
+.note-preview .color-container {
+    z-index: 1000;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+    justify-content: space-between;
+    padding-block: 15px;
+}
+
+.add-note .color-container {
+    z-index: 1000;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: -40px;
+    gap: 10px;
+    justify-content: space-between;
+    padding-block: 15px;
+}
+
+.modal-container .color-container {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding-block: 15px;
+}
+
+.color-container > * {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.color-container>*:hover {
+ border: 1px solid black;
 }
 
 .todos-list li  {
@@ -113,6 +147,7 @@
 }
  
 .modal-container {
+    position: relative;
     /* width: fit-content; */
     max-width: 30%;
     margin: 0px auto;
@@ -138,6 +173,10 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////// */
+
 
 @media (max-width: 1080px) {
     .pinned-list,
