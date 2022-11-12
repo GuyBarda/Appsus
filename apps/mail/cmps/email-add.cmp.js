@@ -43,10 +43,10 @@ export default {
             this.$router.push("/email");
         },
         loadEmail() {
-            console.log(this.$route.params.obj);
             const note = JSON.parse(this.$route.params.obj);
+            if (note === 1) return;
             this.email.subject = note.subject;
-            this.email.body = note.body;
+            this.email.body = note.body.replaceAll("-", "/");
         },
     },
     computed: {
