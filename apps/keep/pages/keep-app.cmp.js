@@ -47,16 +47,16 @@ export default {
 
     methods: {
         getNotes() {
-            // this.notes = null
+
             noteService.query()
                 .then(notes => {
-                    console.log('query', notes);
                     this.notes = notes
+                    console.log('ss');
                 })
         },
 
-        setBgColor(bgColor) {
-            console.log(bgColor)
+        setBgColor(bgColor, noteId) {
+            noteService.updateNoteColor(bgColor, noteId).then(this.getNotes())
         },
 
         duplicate(noteId) {
@@ -107,7 +107,6 @@ export default {
         notesToShow() {
             const regex = new RegExp(this.filterBy.title, 'i')
             var notes = this.notes.filter(note => regex.test(note.info.title))
-            console.log(notes);
 
             if (this.filterBy.type === '') return notes
             var newNotes = notes.filter(note => note.type === this.filterBy.type)

@@ -20,7 +20,7 @@
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 800px) {
 
     .pinned-list,
     .unpinned-list {
@@ -28,7 +28,7 @@
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 720px) {
 
     .pinned-list,
     .unpinned-list {
@@ -36,7 +36,7 @@
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
 
     .pinned-list,
     .unpinned-list {
