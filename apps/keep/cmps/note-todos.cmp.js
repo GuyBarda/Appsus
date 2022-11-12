@@ -10,7 +10,6 @@ export default {
                     </div>
                 </li>
             </ul>
-     
             <ul class="clean-list todos-list done-list">
                 <li v-for="todo in note.info.todos">
                     <div v-if="todo.isChecked">
