@@ -1,14 +1,18 @@
 .app-header {
-    background-color: var(--secondary-clr1);
-    color: var(--clr5);
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-block: 10px;
-    margin-block-end: 20px;
-    font-family: monospace;
-    font-size: larger;
-    font-weight: 700;
+    margin-block-end: 40px;
+    max-height: 60px;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.30);
+    padding-inline: 10px;
+}
+
+.app-header .main-icon {
+    height: 30px;
+    width: 30px;
 }
 
 .app-header .header-nav {
@@ -24,7 +28,7 @@
 }
 
 .header-nav .router-link-exact-active {
-    color: whitesmoke;
+    color: var(--secondary-clr1);
 }
 
 @media (max-width: 720px) {

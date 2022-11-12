@@ -1,0 +1,27 @@
+.filter-icon-bar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+    padding: 20px;
+    left: -20px;
+    top: 45px;
+}
+
+.filter-icon-bar > *{
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}
+
+.filter-icon-bar .filter-item span {
+    transform: translate(0 , 2px);
+}
+
+.filter-icon-bar>*:hover {
+   background-color: var(--clr2)
+}
+
+.filter-icon-bar .filter-item.active {
+    background-color: var(--clr3)
+}

@@ -11,6 +11,8 @@ export default {
        <div @click.stop.prevent="save" v-if="note" class="modal-mask">
           <div class="modal-wrapper">
             <div @click.stop.prevent="" class="modal-container" :style="previewStyle">
+              <button class="pin" @click.prevent.stop="setPin(note.id)">
+                  <span class="material-symbols-outlined">push_pin</span></button>
               
               <section class="note-type">
                 <component :is="note.type"  
@@ -21,10 +23,12 @@ export default {
               </section>
 
               <section class="preview-controller">
-                <button @click.prevernt="setPin(note.id)"><i class="fa-solid fa-lg fa-map-pin"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-user-plus"></i></button>
-                <button @click.prevernt="click"><i class="fa-solid fa-lg fa-image"></i></button>
-                <button @click.prevernt="toggleColor"><i class="fa-solid fa-lg fa-palette"></i></button>
+                <button @click.prevent.stop="click">
+                  <span class="material-symbols-outlined">palette</span></button>
+                  <button @click.prevent.stop="duplicate(note.id)">
+                    <span class="material-symbols-outlined">content_copy</span></button>
+                    <button @click.prevent.stop>
+                        <span class="material-symbols-outlined">forward_to_inbox</span></button>
               </section>
               
               <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>

@@ -5,35 +5,57 @@ import colorPicker from "./color-picker.cmp.js"
 export default {
     props: [''],
     template: `
-    <section class="add-note">
+    <section @click.stop.prevent="closeColor" class="add-note">
+            <form  :style="inputBgColor" class="add-note-inputs" @submit.prevent="add"> 
 
-            <form class="add-note-inputs" @submit.prevent="add">
-                <input :style="inputBgColor" type="text" placeholder="Title..." />
-                <input :style="inputBgColor" type="text" placeholder="Note..." />
-
-                <div class="controler">
-                    <button :class="isPin" @click="setPin" type="button"><i class="fa-solid fa-lg fa-map-pin"></i></button>
-                    <button type="button"><i class="fa-solid fa-lg fa-image"></i></button>
-                    <button @click="toggleColor" type="button"><i class="fa-solid fa-lg fa-palette"></i></button>
+                <div class="controler-line line1">
+                    <input @focus="setDisplayLine" type="text" placeholder="Title..." />
+                    <button>
+                        <span class="material-symbols-outlined">title</span></button>
+                    <button type="button">
+                        <span class="material-symbols-outlined">image</span></button>
+                    <button type="button">
+                        <span class="material-symbols-outlined">smart_display</span></button>
+                    <button type="button">
+                        <span class="material-symbols-outlined">list</span></button>
+                    <button :class="isPin" @click="setPin" type="button">
+                        <span class="material-symbols-outlined">push_pin</span></button>
+                    
                 </div>
-                
-                <button>Add note!</button>
-                
-                <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>
+
+                <div v-if="isLineDisplay" class="controler-line line2">
+                    <input type="text" placeholder="Note..." />
+                    <span @click.stop.prevent class="color-group">
+                        <button @click.stop.prevent="openColor" type="button">
+                            <span class="material-symbols-outlined">palette</span></button>
+                            <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker> 
+                        </span>
+                    <button class="create-note-btn">Create</button>
+                </div>
+
+                <!-- <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>  -->
+
             </form>
-            
+
     </section>
     ` ,
     data() {
         return {
             isColorOpen: false,
             isPinned: false,
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            isLineDisplay: false
         }
     },
     methods: {
-        toggleColor() {
-            this.isColorOpen = !this.isColorOpen
+        setDisplayLine() {
+            this.isLineDisplay = !this.isLineDisplayrue
+        },
+        openColor() {
+            this.isColorOpen = true
+        },
+        closeColor() {
+            this.isColorOpen = false
         },
         setBgColor(bgColor) {
             this.backgroundColor = bgColor

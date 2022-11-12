@@ -2,11 +2,11 @@ export default {
     props: ['previewWidth'],
     template: `
         <div ref="colorPicker" class="color-container">
-            <div @click.stop.prevent="setBgColor('#d63031')" style="background-color: #d63031;"></div>
-            <div @click.stop.prevent="setBgColor('#e17055')" style="background-color: #e17055;"></div>
-            <div @click.stop.prevent="setBgColor('#fdcb6e')" style="background-color: #fdcb6e;"></div>
-            <div @click.stop.prevent="setBgColor('#0984e3')" style="background-color: #0984e3;"></div>
-            <div @click.stop.prevent="setBgColor('#00cec9')" style="background-color: #00cec9;"></div>
+            <div @click.stop.prevent="setBgColor('#ffeaa7')" style="background-color: #ffeaa7;"></div>
+            <div @click.stop.prevent="setBgColor('#fab1a0')" style="background-color: #fab1a0;"></div>
+            <div @click.stop.prevent="setBgColor('#fd79a8')" style="background-color: #fd79a8;"></div>
+            <div @click.stop.prevent="setBgColor('#a29bfe')" style="background-color: #a29bfe;"></div>
+            <div @click.stop.prevent="setBgColor('#81ecec')" style="background-color: #81ecec;"></div>
             <div class="white" @click.stop.prevent="setBgColor('white')"></div>
           
         </div>   

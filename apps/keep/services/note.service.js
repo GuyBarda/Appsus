@@ -12,6 +12,8 @@ export default {
     remove,
     save,
     getEmptyTxtNote,
+    getTodoById,
+    toggleTodo
 }
 
 function getEmptyTxtNote(title = '', txt = '', isPinned = false, backgroundColor = 'white') {
@@ -45,7 +47,7 @@ function _createNotes() {
                     title: "Bobi and Me"
                 },
                 style: {
-                    backgroundColor: "#6c5ce7"
+                    backgroundColor: "#ffeaa7"
                 }
             },
             {
@@ -55,8 +57,8 @@ function _createNotes() {
                 info: {
                     label: "Get my knifes together",
                     todos: [
-                        { id: utilService.makeId(), txt: "kill everyone", doneAt: null },
-                        { id: utilService.makeId(), txt: "dont kill cats", doneAt: 187111111 }
+                        { id: utilService.makeId(), txt: "kill everyone", doneAt: null, isChecked: false },
+                        { id: utilService.makeId(), txt: "dont kill cats", doneAt: 187111111, isChecked: false }
                     ]
                 },
                 style: {
@@ -72,7 +74,7 @@ function _createNotes() {
                     txt: "ok a ok..."
                 },
                 style: {
-                    backgroundColor: "#fdcb6e"
+                    backgroundColor: "#81ecec"
                 }
             },
             {
@@ -85,6 +87,31 @@ function _createNotes() {
                         { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
                         { id: utilService.makeId(), txt: "Coding power", doneAt: 187111111 }
                     ]
+                },
+                style: {
+                    backgroundColor: "#dfe6e9"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    title: 'call 911',
+                    txt: "ask if everything is alright."
+                },
+                style: {
+                    backgroundColor: "#ffeaa7"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    title: 'Nice chords',
+                    txt: `D/A Bbmaj7 Fmaj7 Bmin7(-5) \n
+                    Bbmaj7 Fmaj7 A Gmin(add2)/Bb G(add2)/B`
                 },
                 style: {
                     backgroundColor: "#fab1a0"
@@ -102,7 +129,7 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#fd79a8"
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
@@ -114,7 +141,7 @@ function _createNotes() {
                     txt: "Just a text..."
                 },
                 style: {
-                    backgroundColor: "#fdcb6e"
+                    backgroundColor: "#81ecec"
                 }
             },
 
@@ -140,14 +167,39 @@ function _createNotes() {
                             That you can't come back from.`
                 },
                 style: {
-                    backgroundColor: "#dfe6e9"
+                    backgroundColor: "#a29bfe"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    title: 'Nice chords 2',
+                    txt: `Asus4 Bbmaj7 Fmaj7/A Abmaj7(add6) \n
+                    Asus4 Bbmaj7 Fmaj7/A Gmin(add2)/Bb G(add2)/B`
+                },
+                style: {
+                    backgroundColor: "#ffeaa7"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'Get more for my todo list',
+                    txt: "more milk.."
+                },
+                style: {
+                    backgroundColor: "#ffeaa7"
                 }
             },
 
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     label: "Milk list!",
                     todos: [
@@ -158,7 +210,7 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#fdcb6e"
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
@@ -170,19 +222,35 @@ function _createNotes() {
                     txt: "Just a text..??."
                 },
                 style: {
-                    backgroundColor: "#fd79a8"
+                    backgroundColor: "#81ecec"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-todos",
+                isPinned: true,
+                info: {
+                    label: "shoping list",
+                    todos: [
+                        { id: utilService.makeId(), txt: "milk", doneAt: null },
+                        { id: utilService.makeId(), txt: "bread", doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: "goo milk", doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-img",
-                isPinned: false,
+                isPinned: true,
                 info: {
                     url: "http://coding-academy.org/books-photos/2.jpg",
                     title: "Kuki and Me"
                 },
                 style: {
-                    backgroundColor: "#d63031"
+                    backgroundColor: "#ffeaa7"
                 }
             },
             {
@@ -210,7 +278,19 @@ function _createNotes() {
 .`
                 },
                 style: {
-                    backgroundColor: "#ff7675"
+                    backgroundColor: "#fab1a0"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'say to someone im know what to do',
+                    txt: "I don't know what to do"
+                },
+                style: {
+                    backgroundColor: "#81ecec"
                 }
             },
             {
@@ -228,13 +308,13 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#00b894"
+                    backgroundColor: "#fab1a0"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: 'Pyramid Song, Radiohead',
                     txt: `I jumped in the river and what did I see?
@@ -258,7 +338,7 @@ function _createNotes() {
                             `
                 },
                 style: {
-                    backgroundColor: "#81ecec"
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
@@ -270,7 +350,19 @@ function _createNotes() {
                     txt: "Just a text..."
                 },
                 style: {
-                    backgroundColor: "#00cec9"
+                    backgroundColor: "#81ecec"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'fix my pc',
+                    txt: "Just fix my pc..."
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
@@ -285,7 +377,7 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#fd79a8"
+                    backgroundColor: "#fab1a0"
                 }
             },
             {
@@ -300,15 +392,12 @@ function _createNotes() {
                     ]
                 },
                 style: {
-                    backgroundColor: "#6c5ce7"
+                    backgroundColor: "#ffeaa7"
                 }
             },
         ]
-
-
         utilService.saveToStorage(KEEP_KEY, notes)
     }
-
     return notes
 }
 
@@ -318,6 +407,26 @@ function query() {
 
 function get(noteId) {
     return storageService.get(KEEP_KEY, noteId)
+}
+function getTodoById(todoId, noteId) {
+    return get(noteId).then(note => {
+        return note.info.todos.find(todo => todo.id === todoId)
+    })
+}
+
+function toggleTodo(noteId, todoId) {
+    return get(noteId).then(note => {
+        const todo = note.info.todos.find(todo => todo.id === todoId)
+
+        todo.isChecked = !todo.isChecked
+        // if (!todo.doneAt) {
+        //     todo.doneAt = Date.now()
+        // } else {
+        //     todo.doneAt = null
+        // }
+        console.log(todo);
+        return todo
+    })
 }
 
 function remove(noteId) {

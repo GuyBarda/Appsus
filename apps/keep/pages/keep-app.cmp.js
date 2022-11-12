@@ -1,5 +1,6 @@
 
 import noteService from "../services/note.service.js"
+import utilService from "../../../services/util-service.js"
 
 import addNote from "../cmps/add-note.cmp.js"
 import noteFilter from "../cmps/note-filter.cmp.js"
@@ -10,15 +11,17 @@ export default {
 
     template: `
     <section class="keep-app main-layout">
-        <h1>hello keep!</h1>
+        <note-filter
+        @filter="setFilter"/>
         <add-note
         @updateData="getNotes"/>
-        <!-- <note-filter/> -->
         <note-list
         v-if="notes"
+        @color="setBgColor"
+        @duplicate="duplicate"
         @setPin="setPin"
         @setTodo="setTodo"
-        :notes="notes"/>
+        :notes="notesToShow"/>
         <router-view
         @updateData="getNotes"
         @setPin="setPin"
@@ -28,7 +31,11 @@ export default {
 
     data() {
         return {
-            notes: null
+            notes: null,
+            filterBy: {
+                type: '',
+                // title: '',
+            }
         }
     },
 
@@ -38,11 +45,32 @@ export default {
 
     methods: {
         getNotes() {
-            this.notes = null
+            // this.notes = null
             noteService.query()
                 .then(notes => {
+                    console.log('query', notes);
                     this.notes = notes
                 })
+        },
+
+        setBgColor(bgColor) {
+            console.log(bgColor)
+        },
+
+        duplicate(noteId) {
+            const note = { ...this.notes.find(note => note.id === noteId) }
+            note.id = null
+
+            noteService.save(note).then(note => {
+                console.log(note);
+                this.getNotes()
+            })
+            // noteService.query()
+            //     .then(notes => {
+            //         notes.unshift(note)
+            //         noteService.save(note)
+            //             .then(this.notes = notes)
+            //     })
         },
 
         setPin(noteId) {
@@ -56,16 +84,33 @@ export default {
 
             noteService.get(noteId)
                 .then(note => {
-                    const todoIdx = note.info.todos.findIndex(todo => todo.id === todoId)
-                    if (!note.info.todos[todoIdx].doneAt) {
-                        note.info.todos[todoIdx].doneAt = Date.now()
-                    } else {
-                        note.info.todos[todoIdx].doneAt = null
-                    }
-                    noteService.save(note)
-                        .then(console.log('sace'))
+                    // const todoIdx = note.info.todos.findIndex(todo => todo.id === todoId)
+                    noteService.toggleTodo(noteId, todoId).then(newTodo => {
+                        const noteToUpdate = this.notes.find(note => note.id === noteId)
+                        const toggledTodo = noteToUpdate.info.todos.find(todo => todo.id === newTodo.id)
+                        toggledTodo.isChecked = !toggledTodo.isChecked
+                        noteService.save(noteToUpdate)
+                            .then(() => {
+                                this.getNotes()
+                            })
+                    })
                 })
+        },
+        setFilter(filterBy) {
+            this.filterBy = filterBy
         }
+    },
+
+    computed: {
+        notesToShow() {
+            // const regex = new RegExp(this.filterBy.vendor, 'i')
+            // var cars = this.cars.filter(car => regex.test(car.vendor))
+
+            if (this.filterBy.type === '') return this.notes
+            var notes = this.notes.filter(note => note.type === this.filterBy.type)
+            return notes
+        },
+
     },
 
     components: {
@@ -74,4 +119,4 @@ export default {
         noteList,
         noteDetails, //
     },
-};
+}

@@ -1,0 +1,27 @@
+.color-container {
+    position: absolute;
+    transform: translate(-50%);
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.30);
+    border-radius: 8px;
+    padding-inline: 20px;
+}
+
+.white {
+    border: 1px solid black;
+}
+
+.checked-todo {
+    text-decoration: line-through;
+}
+
+.color-container>* {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+
+.color-container>*:hover {
+    border: 1px solid black;
+}

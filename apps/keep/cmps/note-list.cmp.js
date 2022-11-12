@@ -5,7 +5,7 @@ import notePreview from "./note-preview.cmp.js"
 export default {
     props: ['notes'],
     template: `
-    <section class="note-lists">
+    <section  class="note-lists">
         <div>
             <h5 v-if="showPinnedHeader">Pinned</h5>
             <section class="unpinned-list">
@@ -13,6 +13,8 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
+                        @color="setBgColor"
+                        @duplicate="duplicate"
                         @setPin="setPin"
                         @setTodo="setTodo"
                         v-if="note.isPinned"
@@ -27,6 +29,8 @@ export default {
                 <ul class="clean-list">
                     <li v-for="note in notes" :key="note.id">
                         <note-preview
+                        @color="setBgColor"
+                        @duplicate="duplicate"
                         @setPin="setPin"
                         @setTodo="setTodo"
                         v-if="!note.isPinned"
@@ -41,6 +45,9 @@ export default {
     `,
 
     methods: {
+        duplicate(noteId) {
+            this.$emit("duplicate", noteId);
+        },
         setTodo(todo) {
             this.$emit('setTodo', todo)
         },
@@ -48,7 +55,7 @@ export default {
             this.$emit('setPin', noteId)
         },
         setBgColor(bgColor) {
-            this.backgroundColor = bgColor
+            this.$emit('color', bgColor)
         },
     },
 

@@ -9,7 +9,9 @@ export default {
     props: ["note"],
     template: `
     <router-link :to="'/keep/' + note.id">
-        <section ref="notePreview" :style="previewStyle" class="note-preview">
+        <section @color="setBgColor" ref="notePreview" :style="previewStyle" class="note-preview">
+            <button class="pin" @click.prevent.stop="setPin(note.id)">
+                <span class="material-symbols-outlined">push_pin</span></button>
 
                 <section class="note-type">
                     <component :is="note.type"  
@@ -17,12 +19,15 @@ export default {
                     @setTodo="setTodo">
                     </component>
                 </section>
+
                 
                 <section class="preview-controller">
-                    <button @click.prevent.stop="setPin(note.id)"><i class="fa-solid fa-lg fa-map-pin"></i></button>
-                    <button @click.prevent.stop="saveAsEmail"><i class="fa-solid fa-lg fa-user-plus"></i></button>
-                    <button @click.prevent.stop="click"><i class="fa-solid fa-lg fa-image"></i></button>
-                    <button @click.prevent.stop="click"><i class="fa-solid fa-lg fa-palette"></i></button>
+                    <button @click.prevent.stop="toggleColor">
+                        <span class="material-symbols-outlined">palette</span></button>
+                        <button><span class="material-symbols-outlined">content_copy</span></button>
+                        <button @click.prevent.stop="saveAsEmail">
+                            <span class="material-symbols-outlined">forward_to_inbox</span></button>
+                        <button @click.prevent.stop="duplicate(note.id)"></button>
                 </section>
 
                 <color-picker :previewWidth="getWidth"  @color="setBgColor" v-if="isColorOpen"></color-picker>
@@ -61,17 +66,23 @@ export default {
             }
             this.$router.push("/email/compose/" + JSON.stringify(email));
         },
+        duplicate(noteId) {
+            this.$emit("duplicate", noteId);
+        },
         toggleColor() {
             this.isColorOpen = !this.isColorOpen;
         },
         setBgColor(bgColor) {
-            this.backgroundColor = bgColor;
+            this.$emit("color", bgColor)
         },
         saveAsEmail() {
             this.$router.push("/email/compose?" + JSON.stringify(this.note));
         },
         setPin(noteId) {
             this.$emit("setPin", noteId);
+        },
+        setTodo(todo) {
+            this.$emit('setTodo', todo)
         },
         click() {
             console.log("click");

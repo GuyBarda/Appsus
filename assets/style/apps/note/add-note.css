@@ -1,0 +1,76 @@
+.add-note {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-block-end: 20px;
+}
+
+.add-note-inputs {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    min-width: 65%;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.30);
+    padding-inline: 10px;
+    border-radius: 8px;
+
+}
+
+.add-note-inputs .controler-line input {
+    outline: none;
+    flex-grow: 5;
+}
+
+.add-note-inputs button {
+    transition: .2s;
+}
+
+.add-note-inputs button:hover {
+   background-color: #ececec;
+
+}
+
+
+.add-note-inputs .controler-line {
+    display: flex;
+}
+
+.add-note-inputs .controler-line>* {
+    flex: 1;
+    background-color: transparent;
+    border: none;  
+}
+
+.color-group>* {
+    flex: 1;
+    background-color: transparent;
+    border: none; 
+}
+
+.add-note-inputs .controler-line .active {
+    background-color: #cac0be;
+
+}
+
+.controler-line button:not(.create-note-btn){
+    padding: 0;
+    border-radius: 50%;
+}
+
+
+.controler-line span {
+    transform: translate(0, 2px);
+}
+
+.add-note .color-container {
+    z-index: 1000;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: -50px;
+    gap: 10px;
+    justify-content: space-between;
+    padding-block: 15px;
+}

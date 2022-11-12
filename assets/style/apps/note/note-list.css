@@ -1,0 +1,45 @@
+.note-lists {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.pinned-list,
+.unpinned-list {
+    column-count: 5;
+    column-gap: 10px;
+    margin: auto;
+}
+
+@media (max-width: 1080px) {
+
+    .pinned-list,
+    .unpinned-list {
+        column-count: 4;
+
+    }
+}
+
+@media (max-width: 760px) {
+
+    .pinned-list,
+    .unpinned-list {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 630px) {
+
+    .pinned-list,
+    .unpinned-list {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .pinned-list,
+    .unpinned-list {
+        column-count: 1;
+    }
+}
