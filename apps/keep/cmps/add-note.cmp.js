@@ -23,7 +23,7 @@ export default {
                 </div>
 
                 <div v-if="isLineDisplay" class="controler-line line2">
-                    <input type="text" placeholder="Note..." />
+                    <input type="text" :placeholder="placeholderDisplay" />
                     <span @click.stop.prevent class="color-group">
                         <button @click.stop.prevent="openColor" type="button">
                             <span class="material-symbols-outlined">palette</span></button>
@@ -78,6 +78,11 @@ export default {
         },
     },
     computed: {
+        placeholderDisplay() {
+            if (this.type === 'note-txt') return 'txt'
+            if (this.type === 'note-img') return 'img'
+            if (this.type === 'note-todos') return 'todos'
+        },
         isPin() {
             return { active: this.isPinned === true }
         },
