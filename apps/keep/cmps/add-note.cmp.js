@@ -14,8 +14,8 @@ export default {
                         <span class="material-symbols-outlined">title</span></button>
                     <button type="button" @click="setType('note-img')">
                         <span class="material-symbols-outlined">image</span></button>
-                    <button type="button">
-                        <span class="material-symbols-outlined">smart_display</span></button>
+                    <!-- <button type="button">
+                        <span class="material-symbols-outlined">smart_display</span></button> -->
                     <button type="button" @click="setType('note-todos')">
                         <span class="material-symbols-outlined">list</span></button>
                     <button :class="isPin" @click="setPin" type="button">
@@ -79,9 +79,9 @@ export default {
     },
     computed: {
         placeholderDisplay() {
-            if (this.type === 'note-txt') return 'txt'
-            if (this.type === 'note-img') return 'img'
-            if (this.type === 'note-todos') return 'todos'
+            if (this.type === 'note-txt') return 'Say somthig..'
+            if (this.type === 'note-img') return 'Image URL'
+            if (this.type === 'note-todos') return 'Comma separated todos'
         },
         isPin() {
             return { active: this.isPinned === true }
