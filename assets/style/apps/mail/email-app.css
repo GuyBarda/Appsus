@@ -108,6 +108,14 @@
     gap: 5px;
 }
 
+.email-preview .subject {
+    font-weight: 600;
+}
+
+.email-preview .subject span {
+    font-weight: 400;
+}
+
 .email-preview > *:not(.actions) {
     width: 100%;
     align-self: center;
