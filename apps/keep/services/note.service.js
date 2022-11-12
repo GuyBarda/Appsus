@@ -106,10 +106,23 @@ function _createNotes() {
                     backgroundColor: "#ffeaa7"
                 }
             },
+
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'ok!',
+                    txt: "ok a ok..."
+                },
+                style: {
+                    backgroundColor: "#81ecec"
+                }
+            },
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: "Get my knifes together",
                     todos: [
@@ -154,7 +167,7 @@ function _createNotes() {
                 isPinned: true,
                 info: {
                     title: 'call 911',
-                    txt: "ask if everything is alright."
+                    txt: "ask if everything alright."
                 },
                 style: {
                     backgroundColor: "#ffeaa7"
@@ -244,6 +257,42 @@ function _createNotes() {
                 type: "note-txt",
                 isPinned: false,
                 info: {
+                    title: 'say to someone HE know what to do',
+                    txt: "I don't know what to do"
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: true,
+                info: {
+                    title: 'call 911',
+                    txt: "ask if everything alright."
+                },
+                style: {
+                    backgroundColor: "#ffeaa7"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'more demi data!',
+                    txt: "more more"
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
                     title: 'Get more for my todo list',
                     txt: "more milk.."
                 },
@@ -299,6 +348,18 @@ function _createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'call doctor',
+                    txt: ".."
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "note-img",
                 isPinned: true,
                 info: {
@@ -347,6 +408,18 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: "#81ecec"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
+                isPinned: false,
+                info: {
+                    title: 'fix my pc',
+                    txt: "yalla! fix my pc..."
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
                 }
             },
             {
@@ -411,6 +484,21 @@ function _createNotes() {
             },
             {
                 id: utilService.makeId(),
+                type: "note-todos",
+                isPinned: false,
+                info: {
+                    title: "Set my stuff on fire!",
+                    todos: [
+                        { id: utilService.makeId(), txt: "only liscence", doneAt: null },
+                        { id: utilService.makeId(), txt: "just power", doneAt: 187111111 }
+                    ]
+                },
+                style: {
+                    backgroundColor: "#a29bfe"
+                }
+            },
+            {
+                id: utilService.makeId(),
                 type: "note-txt",
                 isPinned: false,
                 info: {
@@ -439,7 +527,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: "Set my stuff on water!",
                     todos: [
