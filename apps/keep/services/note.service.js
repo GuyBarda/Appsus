@@ -11,26 +11,82 @@ export default {
     get,
     remove,
     save,
-    getEmptyTxtNote,
     getTodoById,
-    toggleTodo
+    updateNoteColor,
+    toggleTodo,
+    addNote
 }
 
-function getEmptyTxtNote(title = '', txt = '', isPinned = false, backgroundColor = 'white') {
+function getEmptyTxtNote(isPinned, title, bgc, val) {
     return {
         id: null,
         type: "note-txt",
         isPinned,
         info: {
             title,
-            txt,
+            txt: val
         },
         style: {
-            backgroundColor,
+            backgroundColor: bgc
         }
     }
 }
 
+function getEmptyImgNote(isPinned, title, bgc, val) {
+    return {
+        id: null,
+        type: "note-img",
+        isPinned,
+        info: {
+            url: val,
+            title,
+        },
+        style: {
+            backgroundColor: bgc
+        }
+    }
+}
+
+function getEmptyTodosNote(isPinned, title, bgc, val) {
+    const todos = []
+    let strs = val.split(',')
+    strs.forEach(str => {
+        console.log(str)
+        const todo = { id: utilService.makeId(), txt: str, doneAt: null }
+        todos.push(todo)
+    })
+
+    return {
+        id: null,
+        type: "note-todos",
+        isPinned,
+        info: {
+            title,
+            todos: todos
+        },
+        style: {
+            backgroundColor: bgc
+        }
+    }
+}
+
+function addNote(type, isPinned, bgc, title, val) {
+    let note
+    if (type === 'note-txt') note = getEmptyTxtNote(isPinned, title, bgc, val)
+    if (type === 'note-img') note = getEmptyImgNote(isPinned, title, bgc, val)
+    if (type === 'note-todos') note = getEmptyTodosNote(isPinned, title, bgc, val)
+
+    return save(note)
+}
+
+
+function updateNoteColor(bgColor, noteId) {
+    return get(noteId).then(note => {
+        note.style.backgroundColor = bgColor
+        save(note)
+    })
+
+}
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(KEEP_KEY)

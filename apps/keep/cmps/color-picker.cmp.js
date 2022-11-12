@@ -1,5 +1,5 @@
 export default {
-    props: ['previewWidth'],
+    props: ['note'],
     template: `
         <div ref="colorPicker" class="color-container">
             <div @click.stop.prevent="setBgColor('#ffeaa7')" style="background-color: #ffeaa7;"></div>
@@ -25,16 +25,11 @@ export default {
 
     methods: {
         setBgColor(bgColor) {
-            this.backgroundColor = bgColor
-            this.$emit('color', this.backgroundColor)
+            this.$emit('color', bgColor)
         },
     },
 
-    computed: {
-        // setPos() {
-        //     return { left: (this.previewWidth - this.$refs.colorPicker.offsetWidth) / 2 }
-        // }
-    },
+
 
 
 }

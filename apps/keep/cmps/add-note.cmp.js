@@ -5,22 +5,21 @@ import colorPicker from "./color-picker.cmp.js"
 export default {
     props: [''],
     template: `
-    <section @click.stop.prevent="closeColor" class="add-note">
-            <form  :style="inputBgColor" class="add-note-inputs" @submit.prevent="add"> 
-
+    <section @click.stop="closeColor" class="add-note">
+            <form @submit.prevent="add" :style="inputBgColor" class="add-note-inputs" > 
+    
                 <div class="controler-line line1">
                     <input @focus="setDisplayLine" type="text" placeholder="Title..." />
-                    <button>
+                    <button type="button" @click="setType('note-txt')">
                         <span class="material-symbols-outlined">title</span></button>
-                    <button type="button">
+                    <button type="button" @click="setType('note-img')">
                         <span class="material-symbols-outlined">image</span></button>
                     <button type="button">
                         <span class="material-symbols-outlined">smart_display</span></button>
-                    <button type="button">
+                    <button type="button" @click="setType('note-todos')">
                         <span class="material-symbols-outlined">list</span></button>
                     <button :class="isPin" @click="setPin" type="button">
-                        <span class="material-symbols-outlined">push_pin</span></button>
-                    
+                        <span class="material-symbols-outlined">push_pin</span></button>                 
                 </div>
 
                 <div v-if="isLineDisplay" class="controler-line line2">
@@ -32,9 +31,6 @@ export default {
                         </span>
                     <button class="create-note-btn">Create</button>
                 </div>
-
-                <!-- <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker>  -->
-
             </form>
 
     </section>
@@ -43,11 +39,28 @@ export default {
         return {
             isColorOpen: false,
             isPinned: false,
+            isLineDisplay: false,
             backgroundColor: 'white',
-            isLineDisplay: false
+            type: 'note-txt'
         }
     },
     methods: {
+
+        add(ev) {
+            const type = this.type
+            const isPinned = this.isPinned
+            const bgc = this.backgroundColor
+            const title = ev.target[0].value
+            const val = ev.target[6].value
+
+            noteService.addNote(type, isPinned, bgc, title, val)
+                .then(this.$emit('updateData'))
+        },
+
+        setType(type) {
+            this.type = type
+        },
+
         setDisplayLine() {
             this.isLineDisplay = !this.isLineDisplayrue
         },
@@ -62,18 +75,6 @@ export default {
         },
         setPin() {
             this.isPinned = !this.isPinned
-        },
-        add(ev) {
-            console.log(ev.target[0].value)
-            console.log(ev.target[1].value)
-
-            const note = noteService.getEmptyTxtNote(ev.target[0].value, ev.target[1].value, this.isPinned, this.backgroundColor)
-
-            noteService.save(note)
-                .then(res => {
-                    console.log(res)
-                    this.$emit('updateData')
-                })
         },
     },
     computed: {

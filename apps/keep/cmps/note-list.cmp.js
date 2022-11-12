@@ -54,8 +54,9 @@ export default {
         setPin(noteId) {
             this.$emit('setPin', noteId)
         },
-        setBgColor(bgColor) {
-            this.$emit('color', bgColor)
+        setBgColor(bgColor, noteId) {
+            // console.log(noteData)
+            this.$emit('color', bgColor, noteId)
         },
     },
 

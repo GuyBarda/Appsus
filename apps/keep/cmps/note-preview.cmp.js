@@ -9,7 +9,7 @@ export default {
     props: ["note"],
     template: `
     <router-link :to="'/keep/' + note.id">
-        <section @color="setBgColor" ref="notePreview" :style="previewStyle" class="note-preview">
+        <section ref="notePreview" :style="previewStyle" class="note-preview">
             <button class="pin" @click.prevent.stop="setPin(note.id)">
                 <span class="material-symbols-outlined">push_pin</span></button>
 
@@ -20,7 +20,6 @@ export default {
                     </component>
                 </section>
 
-                
                 <section class="preview-controller">
                     <button @click.prevent.stop="toggleColor">
                         <span class="material-symbols-outlined">palette</span></button>
@@ -30,7 +29,7 @@ export default {
                         <button @click.prevent.stop="duplicate(note.id)"></button>
                 </section>
 
-                <color-picker :previewWidth="getWidth"  @color="setBgColor" v-if="isColorOpen"></color-picker>
+                <color-picker :note="note" @color="setBgColor" v-if="isColorOpen"></color-picker>
             </section>
 
         </router-link> 
@@ -40,6 +39,8 @@ export default {
     data() {
         return {
             isColorOpen: false,
+            bgColor: this.note.style.backgroundColor
+
         };
     },
     methods: {
@@ -73,7 +74,8 @@ export default {
             this.isColorOpen = !this.isColorOpen;
         },
         setBgColor(bgColor) {
-            this.$emit("color", bgColor)
+            this.bgColor = bgColor
+            this.$emit("color", bgColor, this.note.id)
         },
         saveAsEmail() {
             this.$router.push("/email/compose?" + JSON.stringify(this.note));
@@ -90,7 +92,7 @@ export default {
     },
     computed: {
         previewStyle() {
-            return { backgroundColor: this.note.style.backgroundColor };
+            return { backgroundColor: this.bgColor };
         },
 
         getWidth() {
