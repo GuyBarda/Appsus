@@ -22,18 +22,50 @@
 .app-header .main-icon {
     position: absolute;
     width: 30px;
+    bottom: -5px;
+ 
 }
 
 .app-header .header-nav {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    text-align: center;
-    align-items: center;
+    /* padding-block: 10px; */
+    padding-inline: 30px;
+    position: absolute;
+    right: 8px;
+    top: 58px;
+    z-index: 5000;
+    background-color: white;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.30);
+    border-radius: 6px;
 }
 
-.app-header .header-nav a {
-    /* min-height: 0; */
-    line-height: 48px;
+.app-header .burger-nav {
+    width: 40px;
+}
+
+.header-nav > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: 15px;
+}
+
+.nav-icon {
+    cursor: pointer;
+}
+
+.nav-icon:hover {
+    /* background-color: #ececec; */
+}
+
+.app-header .header-nav img {
+    width: 40px;
 }
 
 .header-nav .router-link-exact-active {
