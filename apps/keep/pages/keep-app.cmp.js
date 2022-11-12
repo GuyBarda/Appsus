@@ -65,12 +65,6 @@ export default {
                 console.log(note);
                 this.getNotes()
             })
-            // noteService.query()
-            //     .then(notes => {
-            //         notes.unshift(note)
-            //         noteService.save(note)
-            //             .then(this.notes = notes)
-            //     })
         },
 
         setPin(noteId) {

@@ -1,6 +1,6 @@
 .note-preview {
     position: relative;
-    max-width: 200px;
+    min-width: fit-content;
     border: 1px solid var(--clr5);
     border-radius: 6px;
     break-inside: avoid;
