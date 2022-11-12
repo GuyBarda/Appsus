@@ -33,9 +33,7 @@ export default {
             </section>
 
         </router-link> 
-
     `,
-
     data() {
         return {
             isColorOpen: false,

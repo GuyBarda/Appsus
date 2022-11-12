@@ -3,7 +3,6 @@ export default {
     template: `
         <router-link @click="goTo" :to="'/email/' +email.id">
             <div class="email-preview" :class="{read: email.isRead}">
-                <!-- <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/> -->
                 <button class="btn-star" @click.prevent.stop="starEmail" :class="{'btn-star-active': email.isStarred}">
                     <i class="fa-regular fa-star"></i>
                 </button>
@@ -34,8 +33,8 @@ export default {
             this.email.isRead = true;
             this.email.isDraft
                 ? this.$router.push(
-                    "/email/compose/" + JSON.stringify(this.email)
-                )
+                      "/email/compose/" + JSON.stringify(this.email)
+                  )
                 : this.$router.push("/email/" + this.email.id);
         },
         toggleIsRead() {
@@ -52,8 +51,7 @@ export default {
                 title: subject,
                 txt: body,
             };
-            // console.log(note);
-            // this.$router.push("/keep/" + JSON.stringify(note));
+            this.$router.push("/keep");
         },
     },
     computed: {

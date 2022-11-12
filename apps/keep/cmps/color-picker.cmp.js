@@ -1,5 +1,5 @@
 export default {
-    props: ['note'],
+    props: ["note"],
     template: `
         <div ref="colorPicker" class="color-container">
             <div @click.stop.prevent="setBgColor('#ffeaa7')" style="background-color: #ffeaa7;"></div>
@@ -12,24 +12,14 @@ export default {
         </div>   
 
     `,
-
     data() {
         return {
-            backgroundColor: 'white'
-        }
+            backgroundColor: "white",
+        };
     },
-
-    mounted() {
-        console.log(this.$refs.colorPicker.offsetWidth)
-    },
-
     methods: {
         setBgColor(bgColor) {
-            this.$emit('color', bgColor)
+            this.$emit("color", bgColor);
         },
     },
-
-
-
-
-}
+};

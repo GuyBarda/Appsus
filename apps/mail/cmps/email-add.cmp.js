@@ -4,15 +4,13 @@ export default {
     template: `
         <section v-if="email" class="email-add">
             <form class="email-form" @submit.prevent="addEmail">
-                <header class="form-header">
-                    <h2>New Email</h2>
-                    <button class="btn-close-create" @click="closeCreate">x</button>
-                </header>
+                <h2>New Email</h2>
                 <input type="text" name="" v-model="email.to" placeholder="to"/>
                 <input type="text" name="" v-model="email.subject" placeholder="subject"/>
                 <textarea v-model="email.body" cols="30" rows="10"></textarea>
-                <button>submit</button>
+                <button class="submit">submit</button>
             </form>
+            <div class="btn-close-create" @click="closeCreate"><i class="fa-regular fa-circle-xmark"></i></div>
         </section>
     `,
     data() {
@@ -30,7 +28,6 @@ export default {
     methods: {
         addEmail() {
             this.email.sentAt = Date.now();
-            console.log(this.email);
             emailService.save(this.email);
             this.$emit("added", this.email);
             this.$router.push("/email");

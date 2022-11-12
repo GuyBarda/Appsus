@@ -8,9 +8,6 @@
     color: #202124;
     overflow-x: hidden;
     max-width: 100%;
-    /* place-content: center; */
-    /* align-items: center; */
-    /* justify-content: center; */
 }
 
 .email-app > * {
@@ -30,14 +27,13 @@
     justify-content: center;
     align-items: center;
     width: 60%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     transition: box-shadow 0.08s;
 }
 
 .email-folders .compose:hover {
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
         0 1px 3px 1px rgb(60 64 67 / 30%);
-    /* width: 20px; */
 }
 
 .email-folders button {
@@ -47,6 +43,10 @@
     border-start-end-radius: 50px;
     border-end-end-radius: 50px;
     min-height: 30px;
+}
+
+.email-folders button span {
+    margin-inline-start: 20px;
 }
 
 .email-folders button:hover {
@@ -110,15 +110,11 @@
 
 .email-preview > *:not(.actions) {
     width: 100%;
-    /* justify-self: start; */
-    /* display: flex; */
-    justify-self: center;
     align-self: center;
-    /* place-content: center; */
-    /* text-align: center; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0;
 }
 
 .email-preview:hover {
@@ -136,7 +132,6 @@
 
 .email-preview:hover .actions {
     display: flex;
-    /* background-color: blue; */
     align-items: center;
     justify-content: center;
 }
@@ -147,7 +142,6 @@
     height: 30px;
     min-width: 0;
     min-height: 0;
-    /* background-color: red; */
     border-radius: 50%;
     background-color: transparent;
 }
@@ -181,8 +175,6 @@
 
 .search button {
     border: 0;
-    /* min-width: none; */
-    /* min-height: none; */
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -196,7 +188,6 @@
 .email-filter {
     background-color: #d7e0ec;
     color: #001d35;
-    /* width: 80%; */
     flex: 1;
     border-radius: 7px;
     outline: 0;
@@ -227,9 +218,12 @@
     right: 0;
     width: 50%;
     background-color: white;
-    padding: 10px;
     box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%),
         0px 3px 14px 2px rgb(0 0 0 / 12%), 0px 5px 5px -3px rgb(0 0 0);
+}
+
+.email-form > * {
+    padding: 10px;
 }
 
 .email-add .form-header {
@@ -237,39 +231,47 @@
     width: 100%;
 }
 
-.email-add .form-header h2 {
+.email-add h2 {
     background-color: #d3e3fd;
     margin: 0;
-}
-
-.email-add label {
-    width: 100%;
 }
 
 .email-add input,
 .email-add textarea {
     border: 0;
     outline: 0;
-    padding-inline: 0;
+    /* padding-inline: 0; */
     line-height: 1.25rem;
     font-size: 0.875rem;
     border-bottom: 1px solid #eceff1;
+    resize: none;
 }
 
-/* .email-add textarea { */
-/* border: 0;
-    outline: 0;
-    padding-inline: 0;
-    border-bottom: 1px solid #eceff1; */
-/* font-size: large; */
-/* width: 100%; */
-/* height: 10%; */
-/* } */
+.email-add textarea {
+    padding-block: 14px;
+}
 
 .email-add .btn-close-create {
     position: absolute;
     top: 0;
     right: 0;
+    border: 0;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.email-add .submit {
+    background-color: #0b57d0;
+    width: 20%;
+    border-radius: 50px;
+    color: white;
+    border: 0;
+    margin: 10px;
 }
 
 .email-add .email-form {
