@@ -5,21 +5,34 @@ export default {
     template: `
         <!-- <pre>{{email}}</pre> -->
         <div v-if="email" class="email-details">
-            <div className="actions">
-                <div class="navigation-links">
-                    <!-- <router-link>next</router-link> -->
-                    <!-- <router-link>back</router-link> -->
-                </div>
+            <div class="actions">
+                <!-- <div class="navigation-links">
+                    <router-link>next</router-link>
+                    <router-link>back</router-link>
+                </div> -->
                 <div class="buttons">
-                    <button @click="">Delete</button>
-                    <button @click="">Star</button>
-                    <button @click="">Favorite</button>
-                    <button @click="">Categories</button>
+                    <button class="btn-star" @click.prevent.stop="starEmail" :class="{'btn-star-active': email.isStarred}">
+                    <i class="fa-regular fa-star"></i>
+                    </button>
+                    <button @click.stop.prevent="sendToNote" title="Send to keepApp">
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                    <button @click.stop.prevent="toggleIsRead" title="Mark as read">
+                        <i class="fa-regular fa-envelope-open"></i>
+                    </button>
+                    <button v-else @click.stop.prevent="$emit('trash', email)" title="Move to trash" >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
             </div>
-            <h2>{{email.subject}}</h2>
-            <h3>{{email.from}} <p>at {{formattedDate}}</p></h3>
-            <p>{{email.body}}</p>
+            <header class="details-header">
+                <h3>{{email.from}} <p></p></h3>
+                <p>{{formattedDate}}</p>
+            </header>
+            <main class="details-content">
+                <h2>{{email.subject}}</h2>
+                <p>{{email.body}}</p>
+            </main>
         </div>
     `,
     data() {
@@ -44,7 +57,8 @@ export default {
         formattedDate() {
             var options = {
                 day: "numeric",
-                month: "short",
+                month: "long",
+                year: "numeric",
                 hour: "numeric",
                 minute: "numeric",
             };

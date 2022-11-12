@@ -4,7 +4,7 @@ export default {
         <router-link @click="goTo" :to="'/email/' +email.id">
             <div class="email-preview" :class="{read: email.isRead}">
                 <!-- <input @click.stop="$emit('save', email)" type="checkbox" v-model="email.isRead"/> -->
-                <button class="btn-star" @click.prevent.stop="starEmail">
+                <button class="btn-star" @click.prevent.stop="starEmail" :class="{'btn-star-active': email.isStarred}">
                     <i class="fa-regular fa-star"></i>
                 </button>
                 <p>{{from}}</p>
@@ -17,10 +17,10 @@ export default {
                     <button @click.stop.prevent="toggleIsRead" title="Mark as read">
                         <i class="fa-regular fa-envelope-open"></i>
                     </button>
-                    <button v-if="email.isTrash" @click.stop.prevent="$emit('remove', email.id)" title="Move to trash">
+                    <button v-if="email.isTrash" @click.stop.prevent="$emit('remove', email.id)" title="Delete email">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
-                    <button v-else @click.stop.prevent="$emit('trash', email)" title="Delete email">
+                    <button v-else @click.stop.prevent="$emit('trash', email)" title="Move to trash" >
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -63,9 +63,9 @@ export default {
             return new Date(this.email.sentAt).toLocaleDateString("en-US", options);
         },
         from() {
-            const { from } = this.email;
+            const { from, to } = this.email;
             return from === "OG@appsus.com"
-                ? "You"
+                ? `You - to ${to.slice(0, to.indexOf("@"))}`
                 : from.slice(0, from.indexOf("@"));
         },
     },

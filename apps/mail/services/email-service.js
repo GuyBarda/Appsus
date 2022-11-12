@@ -21,6 +21,7 @@ function query(criteria = null) {
     if (!criteria) return storageService.query(EMAILS_KEY);
     const { email: logEmail } = loggedinUser;
     return storageService.query(EMAILS_KEY).then((emails) => {
+        console.log(criteria);
         //filter by text
         emails = emails.filter(
             (email) =>
@@ -33,9 +34,7 @@ function query(criteria = null) {
 
         //by star
         if (criteria.isStarred)
-            emails = emails.filter(
-                (email) => email.isStarred && !email.isTrash
-            );
+            return emails.filter((email) => email.isStarred);
 
         //by read
         emails = criteria.isRead

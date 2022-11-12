@@ -21,8 +21,10 @@ export default {
         };
     },
     created() {
+        console.log("compose");
         this.email = emailService.getEmptyEmail();
         this.loadEmail();
+        console.log(this.email);
     },
     methods: {
         addEmail() {

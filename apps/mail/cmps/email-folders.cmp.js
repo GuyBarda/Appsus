@@ -5,7 +5,7 @@ export default {
                 <!-- <button class="compose" @click="$emit('create')">Compose</button> -->
                 <router-link class="compose" to="/email/compose/1" >Compose</router-link>
                 <button @click="changeCriteria('status' ,'inbox', $event)">Inbox</button>
-                <button @click="changeCriteria('status' , 'starred', $event)">Starred</button>
+                <button @click="changeCriteria('isStarred' , true, $event)">Starred</button>
                 <button @click="changeCriteria('isRead' , true , $event)">Read</button>
                 <button @click="changeCriteria('status' , 'sent', $event)">Sent</button>
                 <button @click="changeCriteria('status' , 'draft', $event)">Draft</button>
@@ -18,7 +18,7 @@ export default {
                 status: "",
                 txt: "",
                 isRead: null,
-                isStared: null,
+                isStarred: null,
                 lables: ["important", "romantic"],
             },
         };
@@ -29,13 +29,14 @@ export default {
                 status: "",
                 txt: "",
                 isRead: null,
-                isStared: null,
+                isStarred: null,
                 lables: ["important", "romantic"],
             };
             ev.target.classList.add("active");
             this.criteria[key] = value;
             console.log(this.criteria);
             this.$emit("filter", this.criteria);
+            this.$router.push("/email/");
         },
     },
 };

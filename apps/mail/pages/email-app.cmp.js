@@ -13,7 +13,7 @@ export default {
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
         <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>
         <h3 v-else>no emails found</h3>
-        <router-view v-if="isReview" @added="refreshEmails" @close="isCreate = false"></router-view>
+        <router-view @added="refreshEmails" @close="isCreate = false"></router-view>
     </section>`,
     data() {
         return {
