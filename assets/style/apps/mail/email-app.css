@@ -13,20 +13,45 @@
     /* justify-content: center; */
 }
 
+.email-app > * {
+    font-family: "Poppins";
+}
+
 .email-folders {
     display: flex;
     flex-direction: column;
+}
+
+.email-folders .compose {
+    border-radius: 16px;
+    height: 56px;
+    background-color: #c2e7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin-bottom: 10px;
+    transition: box-shadow 0.08s;
+}
+
+.email-folders .compose:hover {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+        0 1px 3px 1px rgb(60 64 67 / 30%);
+    /* width: 20px; */
 }
 
 .email-folders button {
     border: 0;
     background-color: transparent;
     text-align: start;
-    border-radius: 50px;
+    border-start-end-radius: 50px;
+    border-end-end-radius: 50px;
+    min-height: 30px;
 }
 
 .email-folders button:hover {
     background-color: #d3e3fd;
+    font-weight: 600;
 }
 
 .email-details {
@@ -43,11 +68,7 @@
 }
 
 .email-preview {
-    background-color: inherit;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
-    /* text-align: center; */
+    background-color: white;
     border-bottom: 1px solid #eceff1;
     position: relative;
     padding-inline: 10px;
@@ -59,6 +80,8 @@
 
 .email-preview > *:not(.actions) {
     width: 100%;
+    /* justify-content: center;
+    align-items: center; */
     justify-self: start;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -82,7 +105,7 @@
     display: flex;
     /* background-color: blue; */
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .email-preview .actions button {
@@ -112,9 +135,30 @@
     background-color: transparent;
 }
 
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search button {
+    border: 0;
+    /* min-width: none; */
+    /* min-height: none; */
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.search button:hover {
+    background-color: #fff;
+}
+
 .email-filter {
     background-color: #d7e0ec;
     color: #001d35;
+    /* width: 80%; */
+    flex: 1;
     border-radius: 7px;
     outline: 0;
     opacity: 0.2;
