@@ -1,12 +1,14 @@
 export default {
     template: `
         <header class="app-header">
-        <router-link to="/">Appsus</router-link>
+            <div class="main-title-container">
+                <img class="main-icon" :src="iconSrc" alt="" /> 
+                <router-link class="main-title" to="/">Appsus</router-link>
+            </div>
             <nav class="header-nav">
                 <router-link to="/email">Email</router-link>|
                 <router-link to="/keep">Keep</router-link>| 
                 <router-link to="/about">About</router-link>
-                  <img class="main-icon" :src="iconSrc" alt="" /> 
             </nav>
         </header>
     `,

@@ -35,7 +35,7 @@ const routerOptions = {
             ],
         },
         {
-            path: "/keep",
+            path: "/keep/",
             component: keepApp,
             children: [
                 {

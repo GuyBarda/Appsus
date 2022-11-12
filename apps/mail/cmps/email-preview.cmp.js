@@ -34,8 +34,8 @@ export default {
             this.email.isRead = true;
             this.email.isDraft
                 ? this.$router.push(
-                      "/email/compose/" + JSON.stringify(this.email)
-                  )
+                    "/email/compose/" + JSON.stringify(this.email)
+                )
                 : this.$router.push("/email/" + this.email.id);
         },
         toggleIsRead() {
@@ -52,7 +52,8 @@ export default {
                 title: subject,
                 txt: body,
             };
-            this.$router.push("/keep/compose/" + JSON.stringify(note));
+            // console.log(note);
+            // this.$router.push("/keep/" + JSON.stringify(note));
         },
     },
     computed: {

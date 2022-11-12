@@ -47,6 +47,7 @@ export default {
 
   created() {
     const id = this.$route.params.id
+    if (id.length !== 5) return
     noteService.get(id)
       .then(note => {
         this.note = note

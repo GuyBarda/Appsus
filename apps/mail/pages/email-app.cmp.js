@@ -8,7 +8,7 @@ import emailAdd from "../cmps/email-add.cmp.js";
 export default {
     template: `
     <section class="email-app">
-        <h1>Email</h1>
+        <h1 class="email-header">Email</h1>
         <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
         <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>

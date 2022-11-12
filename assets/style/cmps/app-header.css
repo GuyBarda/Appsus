@@ -12,8 +12,17 @@
     padding-inline: 10px;
 }
 
+.main-title-container {
+    position: relative;
+    height: 100%;
+}
+
+.main-title-container .main-title{
+  padding-inline-start: 40px;
+}
+
 .app-header .main-icon {
-    height: 30px;
+    position: absolute;
     width: 30px;
 }
 
@@ -34,8 +43,8 @@
 }
 
 @media (max-width: 720px) {
-    .app-header {
+    /* .app-header {
         background-color: var(--clr3);
         color: var(--secondary-clr2);
-    }
+    } */
 }

@@ -54,7 +54,7 @@ export default {
             const val = ev.target[6].value
 
             noteService.addNote(type, isPinned, bgc, title, val)
-                .then(this.$emit('updateData'))
+                .then(() => this.$emit('updateData'))
         },
 
         setType(type) {
@@ -89,9 +89,13 @@ export default {
 
         inputBgColor() {
             return { backgroundColor: this.backgroundColor }
-        }
+        },
+
     },
     components: {
         colorPicker,
     },
+
 }
+
+
