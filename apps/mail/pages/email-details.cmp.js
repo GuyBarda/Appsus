@@ -6,10 +6,13 @@ export default {
         <!-- <pre>{{email}}</pre> -->
         <div v-if="email" class="email-details">
             <div class="actions">
-                <!-- <div class="navigation-links">
-                    <router-link>next</router-link>
-                    <router-link>back</router-link>
-                </div> -->
+                <div class="navigation-links">
+                    <!-- <router-link>next</router-link> -->
+                    <!-- <router-link to="/email/">back</router-link> -->
+                    <button @click.prevent.stop="goTo">
+                        <i class="fa-regular fa-hand-point-left"></i>
+                    </button>
+                </div>
                 <div class="buttons">
                     <button class="btn-star" @click.prevent.stop="starEmail" :class="{'btn-star-active': email.isStarred}">
                     <i class="fa-regular fa-star"></i>
@@ -26,7 +29,7 @@ export default {
                 </div>
             </div>
             <header class="details-header">
-                <h3>{{email.from}} <p></p></h3>
+                <h3>{{email.from}}</h3>
                 <p>{{formattedDate}}</p>
             </header>
             <main class="details-content">
@@ -42,16 +45,16 @@ export default {
         };
     },
     created() {
-        console.log("details");
         const id = this.$route.params.id;
-        emailService.get(id).then((email) => {
-            this.email = email;
-            console.log(this.email);
-        });
+        emailService.get(id).then((email) => (this.email = email));
     },
     unmounted() {
-        console.log("bye");
         this.$emit("review", false);
+    },
+    methods: {
+        goTo() {
+            this.$router.push("/email");
+        },
     },
     computed: {
         formattedDate() {

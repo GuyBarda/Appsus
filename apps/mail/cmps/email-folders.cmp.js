@@ -19,7 +19,6 @@ export default {
                 txt: "",
                 isRead: null,
                 isStarred: null,
-                lables: ["important", "romantic"],
             },
         };
     },
@@ -30,11 +29,9 @@ export default {
                 txt: "",
                 isRead: null,
                 isStarred: null,
-                lables: ["important", "romantic"],
             };
             ev.target.classList.add("active");
             this.criteria[key] = value;
-            console.log(this.criteria);
             this.$emit("filter", this.criteria);
             this.$router.push("/email/");
         },
