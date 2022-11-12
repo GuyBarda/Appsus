@@ -59,7 +59,7 @@ export default {
                     email.body = info.url;
                     break;
                 case "note-todos":
-                    email.subject = info.label;
+                    email.subject = info.title;
                     const arrTodos = info.todos.map((todo) => todo.txt);
                     email.body = arrTodos.join(", ");
                     break;
@@ -73,16 +73,13 @@ export default {
             this.isColorOpen = !this.isColorOpen;
         },
         setBgColor(bgColor) {
-            this.$emit("color", bgColor)
-        },
-        saveAsEmail() {
-            this.$router.push("/email/compose?" + JSON.stringify(this.note));
+            this.$emit("color", bgColor);
         },
         setPin(noteId) {
             this.$emit("setPin", noteId);
         },
         setTodo(todo) {
-            this.$emit('setTodo', todo)
+            this.$emit("setTodo", todo);
         },
         click() {
             console.log("click");

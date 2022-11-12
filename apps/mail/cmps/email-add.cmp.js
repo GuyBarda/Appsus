@@ -21,10 +21,11 @@ export default {
         };
     },
     created() {
-        console.log("compose");
         this.email = emailService.getEmptyEmail();
         this.loadEmail();
-        console.log(this.email);
+    },
+    mounted() {
+        this.loadEmail();
     },
     methods: {
         addEmail() {
@@ -42,6 +43,7 @@ export default {
             this.$router.push("/email");
         },
         loadEmail() {
+            console.log(this.$route.params.obj);
             const note = JSON.parse(this.$route.params.obj);
             this.email.subject = note.subject;
             this.email.body = note.body;

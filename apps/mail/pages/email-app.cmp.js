@@ -23,7 +23,6 @@ export default {
                 txt: "",
                 isRead: null,
                 isStared: null,
-                lables: ["important", "romantic"],
             },
             isCreate: false,
             isReview: false,
@@ -34,17 +33,17 @@ export default {
         this.isReview = false;
     },
     mounted() {
+        console.log(this.criteria);
+        this.getFilteredEmails();
         this.isReview = false;
     },
     methods: {
         sortEmails(sortBy) {
-            console.log(sortBy);
             switch (sortBy) {
                 case "ab":
                     this.emails = this.emails.sort((email1, email2) =>
                         email1.subject.localeCompare(email2.subject)
                     );
-                    console.log(this.emails);
                     break;
                 case "date":
                     this.emails = this.emails.sort(

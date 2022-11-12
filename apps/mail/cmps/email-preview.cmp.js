@@ -31,7 +31,6 @@ export default {
     methods: {
         goTo() {
             this.$emit("review", true);
-            console.log(this.email.isDraft);
             this.email.isRead = true;
             this.email.isDraft
                 ? this.$router.push(
