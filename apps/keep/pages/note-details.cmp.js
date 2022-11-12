@@ -11,7 +11,7 @@ export default {
        <div @click.stop.prevent="save" v-if="note" class="modal-mask">
           <div class="modal-wrapper">
             <div @click.stop.prevent="" class="modal-container" :style="previewStyle">
-              <button class="pin" @click.prevent.stop="setPin(note.id)">
+              <button title="Pin" class="pin" @click.prevent.stop="setPin(note.id)">
                   <span class="material-symbols-outlined">push_pin</span></button>
               
               <section class="note-type">
@@ -23,11 +23,11 @@ export default {
               </section>
 
               <section class="preview-controller">
-                <button @click.prevent.stop="click">
+                <button title="Color" @click.prevent.stop="click">
                   <span class="material-symbols-outlined">palette</span></button>
-                  <button @click.prevent.stop="duplicate(note.id)">
+                  <button title="Duplicate" @click.prevent.stop="duplicate(note.id)">
                     <span class="material-symbols-outlined">content_copy</span></button>
-                    <button @click.prevent.stop>
+                    <button title="Send" @click.prevent.stop>
                         <span class="material-symbols-outlined">forward_to_inbox</span></button>
               </section>
               

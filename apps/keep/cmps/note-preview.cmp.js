@@ -2,6 +2,7 @@ import { eventBus } from "../../../services/event-bus.service.js";
 
 import noteTxt from "./note-txt.cmp.js";
 import noteImg from "./note-img.cmp.js";
+import noteVideo from "./note-video.cmp.js";
 import noteTodos from "./note-todos.cmp.js";
 import colorPicker from "./color-picker.cmp.js";
 
@@ -10,7 +11,7 @@ export default {
     template: `
     <router-link :to="'/keep/' + note.id">
         <section ref="notePreview" :style="previewStyle" class="note-preview">
-            <button class="pin" @click.prevent.stop="setPin(note.id)">
+            <button title="Pin" class="pin" @click.prevent.stop="setPin(note.id)">
                 <span class="material-symbols-outlined">push_pin</span></button>
 
                 <section class="note-type">
@@ -21,10 +22,10 @@ export default {
                 </section>
 
                 <section class="preview-controller">
-                    <button @click.prevent.stop="toggleColor">
+                    <button title="Color" @click.prevent.stop="toggleColor">
                         <span class="material-symbols-outlined">palette</span></button>
-                        <button><span class="material-symbols-outlined">content_copy</span></button>
-                        <button @click.prevent.stop="saveAsEmail">
+                        <button title="Duplicate"><span class="material-symbols-outlined">content_copy</span></button>
+                        <button title="Send" @click.prevent.stop="saveAsEmail">
                             <span class="material-symbols-outlined">forward_to_inbox</span></button>
                         <button @click.prevent.stop="duplicate(note.id)"></button>
                 </section>
@@ -96,6 +97,7 @@ export default {
     components: {
         noteTxt,
         noteImg,
+        noteVideo,
         noteTodos,
         colorPicker,
     },

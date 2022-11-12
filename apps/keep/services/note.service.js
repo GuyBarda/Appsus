@@ -96,6 +96,19 @@ function _createNotes() {
 
             {
                 id: utilService.makeId(),
+                type: "note-video",
+                isPinned: true,
+                info: {
+                    url: "https://www.youtube.com/embed/DWuAn6C8Mfc",
+                },
+                style: {
+                    backgroundColor: "#81ecec"
+                }
+            },
+
+
+            {
+                id: utilService.makeId(),
                 type: "note-img",
                 isPinned: false,
                 info: {
@@ -122,7 +135,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: false,
+                isPinned: true,
                 info: {
                     title: "Get my knifes together",
                     todos: [
@@ -171,19 +184,6 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: "#ffeaa7"
-                }
-            },
-            {
-                id: utilService.makeId(),
-                type: "note-txt",
-                isPinned: true,
-                info: {
-                    title: 'Nice chords',
-                    txt: `D/A Bbmaj7 Fmaj7 Bmin7(-5) \n
-                    Bbmaj7 Fmaj7 A Gmin(add2)/Bb G(add2)/B`
-                },
-                style: {
-                    backgroundColor: "#fab1a0"
                 }
             },
             {
@@ -267,7 +267,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: 'call 911',
                     txt: "ask if everything alright."
@@ -279,7 +279,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: false,
+                isPinned: true,
                 info: {
                     title: 'more demi data!',
                     txt: "more more"
@@ -413,6 +413,19 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
+                isPinned: true,
+                info: {
+                    title: 'Nice chords',
+                    txt: `D/A Bbmaj7 Fmaj7 Bmin7(-5) \n
+                    Bbmaj7 Fmaj7 A Gmin(add2)/Bb G(add2)/B`
+                },
+                style: {
+                    backgroundColor: "#fab1a0"
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: "note-txt",
                 isPinned: false,
                 info: {
                     title: 'fix my pc',
@@ -425,7 +438,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-todos",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: "Understand VUE!",
                     todos: [
@@ -473,7 +486,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                isPinned: true,
+                isPinned: false,
                 info: {
                     title: 'yeah!',
                     txt: "Just a text..."

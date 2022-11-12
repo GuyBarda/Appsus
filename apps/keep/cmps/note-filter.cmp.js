@@ -2,15 +2,15 @@ export default {
     template: `
     <section class="filter-notes-section">
         <section class="filter-icon-bar">
-            <button @click.stop.prevent="filter('')" class="filter-item" :class="{active: filterBy.type===''}">
+            <button title="All" @click.stop.prevent="filter('')" class="filter-item" :class="{active: filterBy.type===''}">
                 <span class="material-symbols-outlined">select_all</span></button>
-            <button @click.stop.prevent="filter('note-txt')" class="filter-item" :class="{active: filterBy.type==='note-txt'}">
+            <button title="Text" @click.stop.prevent="filter('note-txt')" class="filter-item" :class="{active: filterBy.type==='note-txt'}">
                 <span class="material-symbols-outlined">title</span></button>
-            <button @click.stop.prevent="filter('note-img')" class="filter-item" :class="{active: filterBy.type==='note-img'}">
+            <button title="Image" @click.stop.prevent="filter('note-img')" class="filter-item" :class="{active: filterBy.type==='note-img'}">
                 <span class="material-symbols-outlined">image</span></button>
-            <!-- <button @click.stop.prevent="filter('note-video')" class="filter-item" :class="{active: filterBy.type==='note-video'}">
+            <!-- <button title="Video" @click.stop.prevent="filter('note-video')" class="filter-item" :class="{active: filterBy.type==='note-video'}">
                 <span class="material-symbols-outlined">smart_display</span></button> -->
-            <button @click.stop.prevent="filter('note-todos')" class="filter-item" :class="{active: filterBy.type==='note-todos'}">
+            <button title="List" @click.stop.prevent="filter('note-todos')" class="filter-item" :class="{active: filterBy.type==='note-todos'}">
                 <span class="material-symbols-outlined">list</span></button>                     
         </section>
     </section>

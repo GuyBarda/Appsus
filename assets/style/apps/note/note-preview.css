@@ -1,7 +1,6 @@
 .note-preview {
     position: relative;
     min-width: fit-content;
-    /* border: 1px solid var(--clr5); */
     border-radius: 6px;
     break-inside: avoid;
     margin: auto;
@@ -51,7 +50,6 @@
 }
 
 .note-preview button {
-    /* flex: 1; */
     cursor: pointer;
     background-color: transparent;
     min-width: 0px;
@@ -72,12 +70,10 @@
 }
 
 input[type="checkbox"] {
-    /* font: inherit; */
     opacity: 0.2;
-    /* border: 1px solid black; */
-    /* width: 1.15em; */
-    /* height: 1.15em; */
-    /* border: 0.15em solid currentColor;
-    border-radius: 0.15em; */
-    /* transform: translateY(-0.075em); */
+}
+
+.video {
+    width: 100%;
+    height: 100%;
 }

@@ -25,12 +25,6 @@
     transition: .2s;
 }
 
-.add-note-inputs button:hover {
-   background-color: #ececec;
-
-}
-
-
 .add-note-inputs .controler-line {
     display: flex;
 }
@@ -74,3 +68,23 @@
     justify-content: space-between;
     padding-block: 15px;
 }
+
+.perent-palette-btn {
+    position: relative;
+}
+
+.palette-btn {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    left: 1px;
+}
+
+/* .palette-icon {
+    position: absolute;
+    top: 1px;
+    bottom:1px ;
+    right: 1px;
+    left:1px ;
+} */

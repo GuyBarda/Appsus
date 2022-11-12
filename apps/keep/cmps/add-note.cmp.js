@@ -10,26 +10,26 @@ export default {
     
                 <div class="controler-line line1">
                     <input @focus="setDisplayLine" type="text" placeholder="Title..." />
-                    <button type="button" @click="setType('note-txt')">
+                    <button title="Text" type="button" @click="setType('note-txt')">
                         <span class="material-symbols-outlined">title</span></button>
-                    <button type="button" @click="setType('note-img')">
+                    <button title="Image" type="button" @click="setType('note-img')">
                         <span class="material-symbols-outlined">image</span></button>
-                    <!-- <button type="button">
+                    <!-- <button title="Video" type="button">
                         <span class="material-symbols-outlined">smart_display</span></button> -->
-                    <button type="button" @click="setType('note-todos')">
+                    <button title="List" type="button" @click="setType('note-todos')">
                         <span class="material-symbols-outlined">list</span></button>
-                    <button :class="isPin" @click="setPin" type="button">
+                    <button title="Pin" :class="isPin" @click="setPin" type="button">
                         <span class="material-symbols-outlined">push_pin</span></button>                 
                 </div>
 
                 <div v-if="isLineDisplay" class="controler-line line2">
                     <input type="text" :placeholder="placeholderDisplay" />
-                    <span @click.stop.prevent class="color-group">
-                        <button @click.stop.prevent="openColor" type="button">
+                    <span class="perent-palette-btn" @click.stop.prevent class="color-group">
+                        <button class="palette-btn" title="Color" @click.stop.prevent="openColor" type="button">
                             <span class="material-symbols-outlined">palette</span></button>
                             <color-picker @color="setBgColor" v-if="isColorOpen"></color-picker> 
                         </span>
-                    <button class="create-note-btn">Create</button>
+                    <button title="Create" class="create-note-btn">Create</button>
                 </div>
             </form>
 

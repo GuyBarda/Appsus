@@ -3,7 +3,7 @@ export default {
 <section class="filter-notes-section">
 
     <section class="search-note">
-        <input type="text" v-model="filterBy.title" @input="filterByTxt" placeholder="Search note..."/>
+        <input title="Search" type="text" v-model="filterBy.title" @input="filterByTxt" placeholder="Search note..."/>
     </section>
         
 </section>

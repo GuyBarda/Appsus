@@ -3,17 +3,10 @@ export default {
         <header class="app-header">
             <div class="main-title-container">
                 <img class="main-icon" :src="iconSrc" alt="" /> 
-                <router-link class="main-title" to="/">Appsus</router-link>
+                <a class="main-title">{{whereAmITitle}}</a>
             </div>
-
-            <!-- <nav v-if="isMenuOpen" class="header-nav">
-                <router-link to="/email">Email</router-link>|
-                <router-link to="/keep">Keep</router-link>| 
-                <router-link to="/about">About</router-link>
-            </nav> -->
             
-              <!-- <button type="button" class="btn-menu" @click="toggleMenu">☰</button> -->
-              <img class="burger-nav nav-icon" @click="toggleMenu" src="./img/nav.png" alt="☰" />
+              <img title="Menu" class="burger-nav nav-icon" @click="toggleMenu" src="./img/nav.png" alt="☰" />
 
             <nav v-if="isMenuOpen" class="header-nav">
 
@@ -27,7 +20,7 @@ export default {
     `,
     data() {
         return {
-            iconSrc: "../img/keep.png",
+            iconSrc: "../img/home.png",
             isMenuOpen: false
         };
     },
@@ -42,6 +35,15 @@ export default {
         whereAmI() {
             return this.$route.path;
         },
+
+        whereAmITitle() {
+            if (this.$route.path === '/') return 'AppSus'
+            if (this.$route.path === '/email') return 'Email'
+            if (this.$route.path === '/keep') return 'Keep'
+            if (this.$route.path === '/about') return 'About'
+
+        }
+
     },
     watch: {
         whereAmI() {
