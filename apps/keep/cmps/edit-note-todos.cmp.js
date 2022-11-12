@@ -4,11 +4,11 @@ export default {
     props: ['note'],
     template: `
         <div class="note-todos-container">
-            <h3 contenteditable @input="saveContent($event,'label')">{{note.info.label}}</h3>
+            <h3 contenteditable @input="saveContent($event,'title')">{{note.info.title}}</h3>
             <ul class="clean-list todos-list undone-list">
 
                 <li v-for="(todo , idx) in note.info.todos">
-                    <div v-if="!todo.doneAt">
+                    <div v-if="!todo.isChecked">
                         <input @click.stop="todoState(todo.id , note.id)" type="checkbox" />
                         <span contenteditable @input="saveContentTxt($event , idx)">
                             {{todo.txt}}
@@ -17,11 +17,10 @@ export default {
                     </div>
                 </li>
             </ul>
-        <hr />
               <ul class="clean-list todos-list undone-list">
 
                 <li v-for="(todo , idx) in note.info.todos">
-                    <div v-if="todo.doneAt">
+                    <div v-if="todo.isChecked">
                         <input @click.stop="todoState(todo.id , note.id)" type="checkbox" />
                         <span contenteditable @input="saveContentTxt($event , idx)">
                             {{todo.txt}}

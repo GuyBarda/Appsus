@@ -55,7 +55,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: true,
                 info: {
-                    label: "Get my knifes together",
+                    title: "Get my knifes together",
                     todos: [
                         { id: utilService.makeId(), txt: "kill everyone", doneAt: null, isChecked: false },
                         { id: utilService.makeId(), txt: "dont kill cats", doneAt: 187111111, isChecked: false }
@@ -82,7 +82,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: false,
                 info: {
-                    label: "Get my stuff together",
+                    title: "Get my stuff together",
                     todos: [
                         { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
                         { id: utilService.makeId(), txt: "Coding power", doneAt: 187111111 }
@@ -122,7 +122,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: false,
                 info: {
-                    label: "Set my stuff on fire!",
+                    title: "Set my stuff on fire!",
                     todos: [
                         { id: utilService.makeId(), txt: "only liscence", doneAt: null },
                         { id: utilService.makeId(), txt: "just power", doneAt: 187111111 }
@@ -201,7 +201,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: false,
                 info: {
-                    label: "Milk list!",
+                    title: "Milk list!",
                     todos: [
                         { id: utilService.makeId(), txt: "Milk", doneAt: null },
                         { id: utilService.makeId(), txt: "More milk", doneAt: 187111111 },
@@ -230,7 +230,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: true,
                 info: {
-                    label: "shoping list",
+                    title: "shoping list",
                     todos: [
                         { id: utilService.makeId(), txt: "milk", doneAt: null },
                         { id: utilService.makeId(), txt: "bread", doneAt: 187111111 },
@@ -298,7 +298,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: true,
                 info: {
-                    label: "Understand VUE!",
+                    title: "Understand VUE!",
                     todos: [
                         { id: utilService.makeId(), txt: "Emit", doneAt: null },
                         { id: utilService.makeId(), txt: "Inbar", doneAt: null },
@@ -370,7 +370,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: false,
                 info: {
-                    label: "Set my stuff now!",
+                    title: "Set my stuff now!",
                     todos: [
                         { id: utilService.makeId(), txt: "Shiping liscence", doneAt: null },
                         { id: utilService.makeId(), txt: "Naming power", doneAt: 187111111 }
@@ -385,7 +385,7 @@ function _createNotes() {
                 type: "note-todos",
                 isPinned: true,
                 info: {
-                    label: "Set my stuff on water!",
+                    title: "Set my stuff on water!",
                     todos: [
                         { id: utilService.makeId(), txt: "only liscence", doneAt: null },
                         { id: utilService.makeId(), txt: "water power", doneAt: 187111111 }

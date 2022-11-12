@@ -2,7 +2,7 @@ export default {
     props: ['note'],
     template: `
         <div class="note-todos-container">
-            <h3>{{note.info.label}}</h3>
+            <h3>{{note.info.title}}</h3>
             <ul class="clean-list todos-list undone-list">
                 <li v-for="todo in note.info.todos">
                     <div v-if="!todo.isChecked">
@@ -10,7 +10,6 @@ export default {
                     </div>
                 </li>
             </ul>
-     
             <ul class="clean-list todos-list done-list">
                 <li v-for="todo in note.info.todos">
                     <div v-if="todo.isChecked">
