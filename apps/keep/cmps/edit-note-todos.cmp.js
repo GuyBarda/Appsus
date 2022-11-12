@@ -1,7 +1,5 @@
-
-
 export default {
-    props: ['note'],
+    props: ["note"],
     template: `
         <div class="note-todos-container">
             <h3 contenteditable @input="saveContent($event,'title')">{{note.info.title}}</h3>
@@ -31,27 +29,19 @@ export default {
             </ul>
         </div>
     `,
-
     methods: {
         saveContent(ev, key) {
-            console.log(key);
-            this.note.info[key] = ev.target.innerText
+            this.note.info[key] = ev.target.innerText;
         },
-
         saveContentTxt(ev, idx) {
-            console.log(idx);
-            this.note.info.todos[idx].txt = ev.target.innerText
+            this.note.info.todos[idx].txt = ev.target.innerText;
         },
-
         todoState(todoId, noteId) {
             const todo = {
                 todoId: todoId,
-                noteId: noteId
-            }
-
-            this.$emit('setTodo', todo)
-        }
-
+                noteId: noteId,
+            };
+            this.$emit("setTodo", todo);
+        },
     },
-
-}
+};

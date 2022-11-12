@@ -11,9 +11,9 @@ export default {
         <h1 class="email-header">Email</h1>
         <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
-        <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>
+        <email-list v-if="emails.length && !isReview"  @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>
         <h3 v-else>no emails found</h3>
-        <router-view @added="refreshEmails" @close="isCreate = false"></router-view>
+        <router-view @review="changeReview" @added="refreshEmails" @close="isCreate = false"></router-view>
     </section>`,
     data() {
         return {
@@ -33,7 +33,6 @@ export default {
         this.isReview = false;
     },
     mounted() {
-        console.log(this.criteria);
         this.getFilteredEmails();
         this.isReview = false;
     },
@@ -53,7 +52,6 @@ export default {
             }
         },
         changeReview(isReview) {
-            console.log(isReview);
             this.isReview = isReview;
         },
         changedCriteriaTxt(txt) {
@@ -62,7 +60,6 @@ export default {
             this.getFilteredEmails();
         },
         changeCriteria(criteria) {
-            // if (this.criteria === criteria) return;
             this.criteria = criteria;
             this.getFilteredEmails();
         },
@@ -76,7 +73,6 @@ export default {
                 .then((emails) => (this.emails = emails));
         },
         trashEmail(email) {
-            console.log(email);
             email.isTrash = true;
             this.saveEmail(email);
         },

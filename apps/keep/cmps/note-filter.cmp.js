@@ -1,7 +1,6 @@
 export default {
     template: `
-<section class="filter-notes-section">
-   
+    <section class="filter-notes-section">
         <section class="filter-icon-bar">
             <button @click.stop.prevent="filter('')" class="filter-item" :class="{active: filterBy.type===''}">
                 <span class="material-symbols-outlined">select_all</span></button>
@@ -14,29 +13,25 @@ export default {
             <button @click.stop.prevent="filter('note-todos')" class="filter-item" :class="{active: filterBy.type==='note-todos'}">
                 <span class="material-symbols-outlined">list</span></button>                     
         </section>
-</section>
-`,
+    </section>
+    `,
     data() {
         return {
             filterBy: {
-                type: '',
-                title: '',
-            }
-        }
+                type: "",
+                title: "",
+            },
+        };
     },
-
     methods: {
         filter(type = this.filterBy.type) {
-            console.log(this.filterBy.title)
-            this.filterBy.type = type
-            this.$emit('filter', this.filterBy)
+            this.filterBy.type = type;
+            this.$emit("filter", this.filterBy);
         },
-
     },
-
     computed: {
         isActive() {
-            return {}
+            return {};
         },
-    }
+    },
 };

@@ -4,12 +4,31 @@ export default {
             <div class="email-folders">
                 <!-- <button class="compose" @click="$emit('create')">Compose</button> -->
                 <router-link class="compose" to="/email/compose/1" >Compose</router-link>
-                <button @click="changeCriteria('status' ,'inbox', $event)">Inbox</button>
-                <button @click="changeCriteria('isStarred' , true, $event)">Starred</button>
-                <button @click="changeCriteria('isRead' , true , $event)">Read</button>
-                <button @click="changeCriteria('status' , 'sent', $event)">Sent</button>
-                <button @click="changeCriteria('status' , 'draft', $event)">Draft</button>
-                <button @click="changeCriteria('status' , 'trash', $event)">Trash</button>
+                <button @click="changeCriteria('status' ,'inbox', $event)">
+                    <i class="fa-solid fa-inbox"></i>
+                    <span>Inbox</span>
+                </button>
+                <button @click="changeCriteria('isStarred' , true, $event)">
+                    <i class="fa-regular fa-star"></i>
+                    <span>Starred</span>
+                    
+                </button>
+                <button @click="changeCriteria('isRead' , true , $event)">
+                    <i class="fa-solid fa-envelope-open"></i>
+                    <span>Read</span>
+                </button>
+                <button @click="changeCriteria('status' , 'sent', $event)">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Sent</span>                  
+                </button>
+                <button @click="changeCriteria('status' , 'draft', $event)">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Draft</span>  
+                </button>
+                <button @click="changeCriteria('status' , 'trash', $event)">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>Trash</span>
+                </button>
             </div>
     `,
     data() {

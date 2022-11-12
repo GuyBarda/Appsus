@@ -21,7 +21,6 @@ function query(criteria = null) {
     if (!criteria) return storageService.query(EMAILS_KEY);
     const { email: logEmail } = loggedinUser;
     return storageService.query(EMAILS_KEY).then((emails) => {
-        console.log(criteria);
         //filter by text
         emails = emails.filter(
             (email) =>
@@ -68,7 +67,6 @@ function query(criteria = null) {
                 emails = emails.filter((email) => email.isDraft);
                 break;
         }
-
         return emails;
     });
 }
