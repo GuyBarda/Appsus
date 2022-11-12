@@ -11,9 +11,9 @@ export default {
         <h1>Email</h1>
         <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
-        <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="starEmail"  :emails="emails"></email-list>
+        <email-list v-if="emails.length && !isReview" @review="changeReview" @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>
         <h3 v-else>no emails found</h3>
-        <router-view @added="refreshEmails" @close="isCreate = false"></router-view>
+        <router-view v-if="isReview" @added="refreshEmails" @close="isCreate = false"></router-view>
     </section>`,
     data() {
         return {
@@ -82,6 +82,7 @@ export default {
             this.saveEmail(email);
         },
         removeEmail(emailId) {
+            if (!confirm("Are you sure")) return;
             emailService.remove(emailId).then(() => {
                 this.emails = this.emails.filter(
                     (email) => email.id !== emailId
