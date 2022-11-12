@@ -4,7 +4,7 @@ export default {
     props: ['note'],
     template: `
         <div class="note-todos-container">
-            <h3 contenteditable @input="saveContent($event,'label')">{{note.info.label}}</h3>
+            <h3 contenteditable @input="saveContent($event,'title')">{{note.info.title}}</h3>
             <ul class="clean-list todos-list undone-list">
 
                 <li v-for="(todo , idx) in note.info.todos">

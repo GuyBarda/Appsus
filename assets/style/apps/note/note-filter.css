@@ -1,3 +1,36 @@
+.filter-notes-section {
+    position: relative;
+}
+
+.search-note {
+    position: absolute;
+    z-index: 3000;
+    top: -105px;
+    left: 30px;
+}
+
+.search-note input {
+    background-color: #dbdbdb;
+    height: 40px;
+    width: 300px;
+    /* box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.30); */
+    padding-inline: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: .2s;
+}
+
+.search-note input:focus {
+    background-color: #f7fcff;
+    /* height: 50px; */
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.30);
+    /* padding-inline: 10px; */
+    /* border-radius: 8px; */
+    /* border: none; */
+    /* outline: none; */
+}
+
 .filter-icon-bar {
     position: fixed;
     display: flex;
@@ -5,7 +38,7 @@
     z-index: 2000;
     padding: 20px;
     left: -15px;
-    top: 50px;
+    top: 60px;
 }
 
 .filter-icon-bar > *{
@@ -20,9 +53,9 @@
 }
 
 .filter-icon-bar>*:hover {
-   background-color: var(--clr2)
+   background-color: #f0f0f0;
 }
 
 .filter-icon-bar .filter-item.active {
-    background-color: var(--secondary-clr1)
+    background-color: #dbdbdb;
 }
