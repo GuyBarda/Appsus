@@ -60,8 +60,8 @@ export default {
       noteService.save(this.note)
         .then(note => {
           // showSuccessMsg(`Car saved (Car id: ${car.id})`)
-          this.$router.push('/keep')
           this.$emit('updateData')
+          this.$router.push('/keep')
         })
         .catch(err => {
           console.log('OOps:', err)
