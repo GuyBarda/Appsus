@@ -49,7 +49,7 @@ export default {
                 isRead: null,
                 isStarred: null,
             };
-            ev.target.classList.add("active");
+            // ev.target.classList.add("active");
             this.criteria[key] = value;
             this.$emit("filter", this.criteria);
             this.$router.push("/email/");

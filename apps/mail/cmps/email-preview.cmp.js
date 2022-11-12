@@ -7,7 +7,7 @@ export default {
                     <i class="fa-regular fa-star"></i>
                 </button>
                 <p>{{from}}</p>
-                <p>{{email.subject}}-<span>{{email.body}}</span></p>
+                <p class="subject">{{email.subject}}- <span>{{email.body}}</span></p>
                 <p>{{formattedDate}}</p>
                 <div class="actions ">
                     <button @click.stop.prevent="sendToNote" title="Send to keepApp">
@@ -63,7 +63,7 @@ export default {
         from() {
             const { from, to } = this.email;
             return from === "OG@appsus.com"
-                ? `You - to ${to.slice(0, to.indexOf("@"))}`
+                ? `You ${to ? "- to" : ""} ${to.slice(0, to.indexOf("@"))}`
                 : from.slice(0, from.indexOf("@"));
         },
     },
