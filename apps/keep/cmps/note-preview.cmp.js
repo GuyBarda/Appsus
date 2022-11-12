@@ -56,7 +56,7 @@ export default {
                     break;
                 case "note-img":
                     email.subject = info.title;
-                    email.body = info.url;
+                    email.body = info.url.replaceAll("/", "-");
                     break;
                 case "note-todos":
                     email.subject = info.title;

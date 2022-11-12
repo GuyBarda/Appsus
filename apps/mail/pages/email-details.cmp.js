@@ -11,7 +11,7 @@ export default {
                     <!-- <router-link to="/email/">back</router-link> -->
                     <button @click.prevent.stop="goTo">
                         <i class="fa-regular fa-hand-point-left"></i>
-                    </button>
+                    </button> 
                 </div>
                 <div class="buttons">
                     <button class="btn-star" @click.prevent.stop="starEmail" :class="{'btn-star-active': email.isStarred}">
