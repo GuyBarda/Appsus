@@ -4,3 +4,12 @@
     margin-inline: 50px;
 }
 
+@media (max-width: 600px) {
+    .keep-app {
+        padding: 0;
+    }
+
+    .main-layout {
+        margin: 0;
+    }
+}
