@@ -1,14 +1,14 @@
-import emailService from "../services/email-service.js";
+import emailService from '../services/email-service.js';
 
-import emailFilter from "../cmps/email-filter.cmp.js";
-import emailList from "../cmps/email-list.cmp.js";
-import emailFolders from "../cmps/email-folders.cmp.js";
-import emailAdd from "../cmps/email-add.cmp.js";
+import emailFilter from '../cmps/email-filter.cmp.js';
+import emailList from '../cmps/email-list.cmp.js';
+import emailFolders from '../cmps/email-folders.cmp.js';
+import emailAdd from '../cmps/email-add.cmp.js';
 
 export default {
     template: `
     <section class="email-app">
-        <h1 class="email-header">Email</h1>
+        <!-- <h1 class="email-header">Email</h1> -->
         <email-filter @sort="sortEmails" @filter="changedCriteriaTxt"></email-filter>
         <email-folders @create="isCreate = true" @filter="changeCriteria"></email-folders>
         <email-list v-if="emails.length && !isReview"  @save="saveEmail" @remove="removeEmail" @trash="trashEmail" @star="saveEmail"  :emails="emails"></email-list>
@@ -19,8 +19,8 @@ export default {
         return {
             emails: [],
             criteria: {
-                status: "inbox",
-                txt: "",
+                status: 'inbox',
+                txt: '',
                 isRead: null,
                 isStared: null,
             },
@@ -39,12 +39,12 @@ export default {
     methods: {
         sortEmails(sortBy) {
             switch (sortBy) {
-                case "ab":
+                case 'ab':
                     this.emails = this.emails.sort((email1, email2) =>
                         email1.subject.localeCompare(email2.subject)
                     );
                     break;
-                case "date":
+                case 'date':
                     this.emails = this.emails.sort(
                         (email1, email2) => email1.sentAt - email2.sentAt
                     );
@@ -77,7 +77,7 @@ export default {
             this.saveEmail(email);
         },
         removeEmail(emailId) {
-            if (!confirm("Are you sure")) return;
+            if (!confirm('Are you sure')) return;
             emailService.remove(emailId).then(() => {
                 this.emails = this.emails.filter(
                     (email) => email.id !== emailId
