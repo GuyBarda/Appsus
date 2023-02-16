@@ -1,17 +1,17 @@
 .email-app {
     display: grid;
-    grid-template: 8vh 92vh/ 250px 1fr;
+    grid-template: 64px 1fr/ 250px 1fr;
     position: relative;
     gap: 10px;
     padding: 10px;
     background-color: #f6f8fc;
     color: #202124;
     overflow-x: hidden;
-    max-width: 100%;
+    min-height: calc(100vh - 60px);
 }
 
 .email-app > * {
-    font-family: "Poppins";
+    font-family: 'Poppins';
 }
 
 .email-folders {
@@ -87,6 +87,10 @@
 
 .email-details .details-content {
     text-align: center;
+}
+
+.email-list {
+    overflow-y: auto;
 }
 
 .email-list ul {

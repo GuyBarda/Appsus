@@ -1,6 +1,5 @@
 export default {
     template: `
-     
             <section class="app-home-container main-layout">
                 <div class="content-container">
                     <h1>Welcome to the future!</h1>
@@ -14,4 +13,4 @@ export default {
                 </div>
             </section>
     `,
-}
+};
